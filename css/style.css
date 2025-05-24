@@ -1,19 +1,25 @@
-/* === CSS Custom Properties (Mossie Color Scheme - Accessibility Enhanced) === */
+/* === CSS Custom Properties (Mossie "Cuter" Color Scheme) === */
 :root {
-    --mossie-bg: #E0FFFF;         /* Very Light Cyan/Aqua - Main page background */
-    --mossie-header-bg: #CCEEFF;  /* Light Blue - Header/Nav background */
-    --mossie-footer-bg: #E6D8FF;  /* Light Lavender - Footer background */
-    --mossie-accent1: #FFDDED;    /* Light Pink 1 - Active links (bg), accents */
-    --mossie-accent2: #FFDDE2;    /* Light Pink 2 - Hover states (bg), subtle accents */
-    --mossie-content-bg: #FFFFFF; /* White - For content boxes to pop */
+    --mossie-bg: #FFF7FA;            /* New - Very Light Pinkish Cream - Main page background */
+    --mossie-header-bg: #FFDDED;     /* User's Light Pink 1 - Header/Nav background */
+    --mossie-footer-bg: #E6D8FF;     /* User's Light Lavender - Footer background */
+    
+    --mossie-accent1-bg: #FFC1D9;    /* New - Slightly Saturated Pink for active/important accents */
+    --mossie-accent1-text: #9D2D5E;  /* New - Darker pink text for on accent1-bg (good contrast) */
+    
+    --mossie-accent2-bg: #D4F0F0;    /* New - Soft Teal for hover, secondary accents */
+    --mossie-content-bg: #FFFFFF;    /* White - For content boxes to pop */
 
-    --mossie-text-dark: #2c3e50;   /* Dark Muted Blue - Primary text, high contrast */
-    --mossie-text-medium: #55606d; /* Medium Grey/Blue - Secondary text, headings */
-    /* --mossie-text-on-accent: #D170A0; /* Kept if needed for specific large text on light bg, but not for nav */
+    --mossie-text-dark: #4A4A4A;      /* New - Softer Dark Grey - Primary text */
+    --mossie-text-medium: #6B7280;    /* New - Softer Medium Grey - Secondary text, headings */
 
-    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif;
+    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif; /* Emphasizing Nunito */
     --nav-height: 60px;
-    --focus-outline-color: #005A9C; /* A distinct blue for focus outlines */
+    --focus-outline-color: #5E94D4;   /* New - Friendly Blue for focus */
+
+    --border-radius-soft: 8px;
+    --border-radius-cute: 12px;      /* More rounded */
+    --border-radius-pill: 50px;      /* For pill-shaped elements */
 }
 
 /* === Global Resets & Base Styles === */
@@ -46,11 +52,11 @@ body {
     position: absolute;
     left: -9999px;
     top: 10px;
-    background-color: var(--mossie-accent1);
-    color: var(--mossie-text-dark); /* Good contrast */
+    background-color: var(--mossie-accent1-bg); /* Using the more saturated pink */
+    color: var(--mossie-accent1-text);    /* Text for on that pink */
     padding: 0.75em 1em;
     z-index: 1100;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 var(--border-radius-soft) var(--border-radius-soft);
     text-decoration: none;
     font-weight: 600;
     transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
@@ -66,7 +72,7 @@ body {
 
 /* === Navigation === */
 nav {
-    background-color: var(--mossie-header-bg);
+    background-color: var(--mossie-header-bg); /* Light Pink */
     position: fixed;
     top: 0;
     left: 0;
@@ -77,7 +83,7 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05); /* Softer shadow */
 }
 
 nav ul {
@@ -88,54 +94,57 @@ nav ul {
 }
 
 nav li {
-    margin: 0 0.5rem;
+    margin: 0 0.3rem; /* Slightly less margin for pill shape if active */
 }
 
 nav li a {
     display: block;
-    color: var(--mossie-text-dark); /* Good contrast on --mossie-header-bg */
+    color: var(--mossie-text-dark); 
     text-align: center;
-    padding: 0.75em 1em;
+    padding: 0.6em 1.2em; /* Adjusted padding for a rounder feel */
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: var(--border-radius-pill); /* Pill shape for all */
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 nav li a:hover {
-    background-color: var(--mossie-accent2); /* Light Pink 2 */
-    color: var(--mossie-text-dark); /* Good contrast */
+    background-color: var(--mossie-accent2-bg); /* Soft Teal */
+    color: var(--mossie-text-dark);
+    transform: translateY(-1px); /* Slight lift on hover */
 }
 
-/* Enhanced focus style for nav links */
 nav li a:focus {
     outline: 2px solid var(--focus-outline-color);
-    outline-offset: 2px;
-    background-color: var(--mossie-accent2); /* Similar to hover for consistency */
+    outline-offset: 3px; /* Ensure outline is clear of the pill */
+    background-color: var(--mossie-accent2-bg); 
     color: var(--mossie-text-dark);
 }
 
 nav li a.active {
-    background-color: var(--mossie-accent1); /* Light Pink 1 */
-    color: var(--mossie-text-dark); /* CHANGED: Was --mossie-text-on-accent. Now high contrast. */
+    background-color: var(--mossie-accent1-bg); /* Saturated Pink */
+    color: var(--mossie-accent1-text);    /* Darker pink text */
     font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
 /* === Header (Site Title Area) === */
 header {
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem 2rem; /* More space */
     text-align: center;
 }
 
 header h1 {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    color: var(--mossie-text-dark); /* Good contrast on --mossie-bg (if header is transparent) or its own bg */
-    letter-spacing: 2px;
+    font-size: clamp(2rem, 6vw, 2.8rem); /* Slightly larger and more impactful */
+    color: var(--mossie-text-dark); 
+    letter-spacing: 1px; /* Less spacing for a softer look with Nunito */
     margin: 0;
+    font-weight: 700; /* Nunito bold is friendly */
 }
-h1#peth1 {
-    padding-top: 1rem;
+h1#peth1 { /* If you still use this ID for the pet page title */
+    padding-top: 1rem; 
+    color: var(--mossie-accent1-text); /* Example: Use accent text color */
 }
 
 
@@ -143,73 +152,79 @@ h1#peth1 {
 main {
     flex-grow: 1;
     width: 100%;
-    padding: 1rem 0;
+    padding: 1.5rem 0; 
 }
 
 .main, .container {
-    max-width: 960px;
+    max-width: 900px; /* Slightly narrower for a cozier feel */
     margin: 1.5rem auto;
-    padding: 1.5rem;
-    background-color: var(--mossie-content-bg); /* White */
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(44, 62, 80, 0.08);
+    padding: 2rem; /* More internal padding */
+    background-color: var(--mossie-content-bg); 
+    border-radius: var(--border-radius-cute); /* Cuter rounding */
+    box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07); /* Softer, more diffuse shadow */
 }
 
 .main h2, .container h2 {
-    font-size: clamp(1.4rem, 4vw, 1.8rem);
-    color: var(--mossie-text-medium); /* Good contrast on white */
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    color: var(--mossie-text-medium); 
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-weight: 600; /* Softer than bold */
+     /* border-bottom: 2px dashed var(--mossie-accent2-bg); /* Cute dashed underline */
 }
 .main h3, .container h3 {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    color: var(--mossie-text-medium); /* Good contrast on white */
-    margin-bottom: 0.75rem;
+    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    color: var(--mossie-text-medium); 
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 
 /* === Feature Box (General Purpose) === */
 .feature-box {
-    font-size: 0.9rem;
-    font-weight: 600;
-    background-color: var(--mossie-accent2); /* Light Pink 2 */
-    color: var(--mossie-text-dark); /* Ensure text here has good contrast */
-    padding: 1.5rem;
+    font-size: 0.95rem; /* Slightly larger text */
+    font-weight: 400; /* Normal weight for more content */
+    background-color: var(--mossie-accent2-bg); /* Soft Teal */
+    color: var(--mossie-text-dark); 
+    padding: 1.8rem;
     text-align: center;
-    border-radius: 6px;
-    margin-bottom: 1.5rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: var(--border-radius-cute); /* Cuter rounding */
+    margin-bottom: 1.8rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .feature-box:hover {
     color: var(--mossie-text-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(44,62,80,0.1);
+    transform: translateY(-4px) scale(1.02); /* More playful hover */
+    box-shadow: 0 6px 18px rgba(107, 114, 128, 0.12);
 }
-.feature-box a:focus { /* Example if links are inside feature boxes */
+.feature-box strong { /* If you use strong tags inside for emphasis */
+    font-weight: 600;
+    color: var(--mossie-text-dark);
+}
+.feature-box a:focus { 
     outline: 2px solid var(--focus-outline-color);
-    outline-offset: 1px;
-    background-color: var(--mossie-accent1); /* different from feature-box bg */
+    outline-offset: 2px;
+    background-color: var(--mossie-header-bg); /* Use the pink for focus inside teal */
 }
 
 
 /* === Footer === */
 footer {
     background-color: var(--mossie-footer-bg); /* Light Lavender */
-    color: var(--mossie-text-dark); /* CHANGED: Was --mossie-text-medium. Now higher contrast. */
+    color: var(--mossie-text-dark); 
     text-align: center;
-    padding: 1.5rem 1rem;
-    font-size: 0.85rem;
+    padding: 2rem 1rem; /* More padding */
+    font-size: 0.9rem; /* Slightly larger footer text */
     margin-top: auto;
+    border-top: 4px solid var(--mossie-accent2-bg); /* Teal accent top border */
 }
 
 /* === Utility Classes === */
 .text-center { text-align: center; }
-.hidden { display: none; } /* For visually hiding content meant for screen readers, use with caution or a more robust class */
 
-/* A more robust visually hidden class for accessibility */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -218,7 +233,7 @@ footer {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
+  white-space: nowrap;
   border: 0;
 }
 
@@ -236,7 +251,7 @@ footer {
 
 @media screen and (min-width: 765px) {
     nav li a {
-        padding: 0.75em 1.2em;
+        padding: 0.7em 1.5em; /* More horizontal padding for pill */
         font-size: 1rem;
     }
 
@@ -246,33 +261,33 @@ footer {
 
     .feature-box {
         font-size: 1rem;
-        padding: 2rem;
+        padding: 2.2rem; 
     }
     .feature-box:hover{
-        color: var(--mossie-text-dark); /* Ensure hover doesn't reduce contrast */
-        border: 2px solid var(--mossie-text-dark);
+        /* Original hover border can be added if desired, but transform is more playful */
+        /* border: 2px solid var(--mossie-text-dark); */
     }
 }
 
 @media screen and (min-width: 1020px) {
-    nav .nav-content-wrapper { /* Add a div with this class inside nav to constrain nav content width */
+    nav .nav-content-wrapper { 
         width: 80%;
-        /* max-width: 1200px; /* Also good to have a max pixel width */
     }
 
     header h1 {
-        padding: 3rem 0 1.5rem 0;
+        padding: 4rem 0 2rem 0; /* Generous spacing */
     }
 
     .main, .container {
-        padding: 2rem;
+        padding: 2.5rem; /* More padding */
+        /* margin-top: 2rem; */
     }
-    .container.feature-grid { /* Add .feature-grid to your container div for a 3-column layout of feature boxes */
+    .container.feature-grid { 
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+        gap: 1.8rem; 
     }
-    .container.feature-grid > .feature-box { /* Target feature boxes inside this specific grid */
-         border: 2px solid var(--mossie-header-bg); /* Example border */
+    .container.feature-grid > .feature-box {
+         /* border: none; /* Removed example border from before, rely on bg and shadow */
     }
 }
