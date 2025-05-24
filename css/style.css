@@ -274,6 +274,195 @@ footer {
     }
 }
 
+/* === Journal Entry Page Styles === */
+.journal-entry-container {
+    max-width: 800px; /* Or your preferred width for focused writing */
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background-color: var(--mossie-content-bg); /* White or a very light page color */
+    border-radius: var(--border-radius-cute);
+    box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between sections */
+}
+
+.journal-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--mossie-accent2-bg); /* Soft Teal as a separator */
+    font-size: 0.9rem;
+}
+
+.journal-back-button {
+    color: var(--mossie-text-medium);
+    text-decoration: none;
+    padding: 0.3em 0.6em;
+    border-radius: var(--border-radius-soft);
+    transition: background-color 0.2s ease;
+}
+.journal-back-button:hover,
+.journal-back-button:focus {
+    background-color: var(--mossie-accent2-bg); /* Soft Teal */
+    color: var(--mossie-text-dark);
+}
+
+.journal-date {
+    color: var(--mossie-text-medium);
+    font-weight: 600;
+}
+
+.journal-save-button {
+    background-color: var(--mossie-accent1-bg); /* Saturated Pink */
+    color: var(--mossie-accent1-text);
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: var(--border-radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.journal-save-button:hover,
+.journal-save-button:focus {
+    background-color: #FFB0C9; /* Slightly lighter/brighter pink */
+    transform: translateY(-1px);
+}
+
+.journal-prompt-area {
+    background-color: var(--mossie-accent2-bg); /* Soft Teal background */
+    color: var(--mossie-text-dark);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-soft);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem; /* Space below prompt if visible */
+}
+.journal-prompt-area p {
+    margin: 0;
+}
+
+.journal-canvas {
+    flex-grow: 1; /* Allows textarea to take available space if container has fixed height */
+}
+
+#journal-text-area {
+    width: 100%;
+    min-height: 300px; /* Adjust as needed, or use rows attribute */
+    padding: 1rem;
+    border: 1px solid #E0E0E0; /* Softer border */
+    border-radius: var(--border-radius-soft);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--mossie-text-dark);
+    background-color: #FCFCFC; /* Very slightly off-white for textarea */
+    resize: vertical; /* Allow user to resize vertically */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+#journal-text-area:focus {
+    outline: 2px solid var(--focus-outline-color);
+    border-color: transparent; /* Hide default border on focus if outline is present */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 0 0 2px var(--focus-outline-color); /* Inner + outer glow */
+}
+#journal-text-area::placeholder {
+    color: var(--mossie-text-light);
+    font-style: italic;
+}
+
+.journal-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--mossie-text-medium);
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--mossie-accent2-bg); /* Soft Teal separator */
+}
+.journal-tags .tag {
+    background-color: var(--mossie-accent2-bg); /* Soft Teal for tags */
+    color: var(--mossie-text-dark);
+    padding: 0.2em 0.6em;
+    border-radius: var(--border-radius-pill);
+    margin-left: 0.3em;
+    font-size: 0.8rem;
+}
+
+.journal-bottom-actions {
+    display: flex;
+    justify-content: space-between; /* Pushes items to ends */
+    align-items: center;
+    padding-top: 0.5rem;
+    position: relative; /* For positioning the tools menu */
+}
+
+.journal-action-button {
+    background-color: transparent;
+    color: var(--mossie-text-medium);
+    border: 1px solid var(--mossie-accent2-bg); /* Soft Teal border */
+    padding: 0.5em 1em;
+    border-radius: var(--border-radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.9rem;
+}
+.journal-action-button:hover,
+.journal-action-button:focus {
+    background-color: var(--mossie-accent2-bg); /* Soft Teal */
+    color: var(--mossie-text-dark);
+    outline: none; /* Custom focus handled by background change or add specific outline */
+}
+.journal-action-button:focus-visible { /* More specific focus for keyboard */
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 1px;
+}
+
+
+/* Styles for the Tools Menu (to be toggled with JavaScript) */
+.journal-tools-menu-container {
+    position: relative; /* Parent for absolute positioning */
+}
+
+.tools-menu-items {
+    position: absolute;
+    bottom: 100%; /* Position above the toggle button */
+    left: 0;
+    background-color: var(--mossie-content-bg); /* White */
+    border: 1px solid #E0E0E0;
+    border-radius: var(--border-radius-soft);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 0.5rem;
+    z-index: 1010; /* Above other journal elements */
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 180px; /* Minimum width for the menu */
+    margin-bottom: 0.5rem; /* Space between menu and button */
+}
+
+.tools-menu-items[hidden] { /* Style for when it's hidden */
+    display: none;
+}
+
+.tools-menu-items button {
+    background: none;
+    border: none;
+    color: var(--mossie-text-dark);
+    padding: 0.6em 0.8em;
+    text-align: left;
+    cursor: pointer;
+    border-radius: var(--border-radius-soft);
+    font-size: 0.9rem;
+    width: 100%;
+}
+.tools-menu-items button:hover,
+.tools-menu-items button:focus {
+    background-color: var(--mossie-accent2-bg); /* Soft Teal */
+    color: var(--mossie-text-dark);
+    outline: none;
+}
+
 
 /* === Media Queries - Refinements & Integration === */
 
