@@ -8,10 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" type="text/css" href="css/html5reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>My Journal Entry</title> </head>
+    <title>My Journal Entry</title>
+</head>
 
 <body>
     <div class="skip-main"><a href="#maincontent">Skip to Main Content</a></div>
@@ -20,25 +21,29 @@
         <nav>
             <ul>
                 <li><a href="index.html" title="home">home</a></li>
-                <li><a href="journal.html" title="journal" class="active">journal</a></li> <li><a href="mood.html" title="mood">mood</a></li>
+                <li><a href="journal.html" title="journal" class="active">journal</a></li>
+                <li><a href="mood.html" title="mood">mood</a></li>
                 <li><a href="pet.html" title="pet">pet</a></li>
             </ul>
         </nav>
-        </header>
+    </header>
 
     <main id="maincontent">
         <div class="journal-entry-container">
             <div class="journal-top-bar">
-                <a href="journal-list.html" class="journal-back-button" aria-label="Back to journal list">&larr; Back</a>
+                <a href="journal-list.html" class="journal-back-button" aria-label="Back to journal list">&larr;
+                    Back</a>
                 <span class="journal-date">May 24, 2025</span>
                 <button class="journal-save-button">Save Entry</button>
             </div>
 
-            <div class="journal-prompt-area" style="display: none;"> <p><strong>Guided Prompt:</strong> What was one small victory today?</p>
+            <div class="journal-prompt-area" style="display: none;">
+                <p><strong>Guided Prompt:</strong> What was one small victory today?</p>
             </div>
 
             <div class="journal-canvas">
-                <textarea id="journal-text-area" placeholder="What's on your mind today? Let your thoughts flow..."></textarea>
+                <textarea id="journal-text-area"
+                    placeholder="What's on your mind today? Let your thoughts flow..."></textarea>
             </div>
 
             <div class="journal-meta-bar">
@@ -46,15 +51,16 @@
                     <span>Tags: </span>
                     <span class="tag">Reflection</span>
                     <span class="tag">Grateful</span>
-                    </div>
+                </div>
                 <div class="journal-mood-link">
                     <span>Mood: 😊</span>
-                    </div>
+                </div>
             </div>
 
             <div class="journal-bottom-actions">
                 <div class="journal-tools-menu-container">
-                    <button id="journal-tools-toggle" class="journal-action-button" aria-expanded="false" aria-controls="tools-menu-items">
+                    <button id="journal-tools-toggle" class="journal-action-button" aria-expanded="false"
+                        aria-controls="tools-menu-items">
                         ＋ Add / Tools
                     </button>
                     <div id="tools-menu-items" class="tools-menu-items" role="menu" hidden>
@@ -69,12 +75,13 @@
             </div>
         </div>
     </main>
-    
+
     <footer>
-         Made by Caleb, Katelyn, Caroline, Sara for EECS 497 SPRING 2025 @ Umich
+        Made by Caleb, Katelyn, Caroline, Sara for EECS 497 SPRING 2025 @ Umich
     </footer>
-        <div class="emotional-pet-corner-accent">
+    <div class="emotional-pet-corner-accent">
         <img src="images/quokka.png" alt="Cute emotional pet corner accent">
     </div>
-    </body>
+</body>
+
 </html>

@@ -123,10 +123,10 @@ nav li a:focus {
 }
 
 nav li a.active {
-    background-color: var(--mossie-accent1-bg); /* Saturated Pink */
-    color: var(--mossie-accent1-text);    /* Darker pink text */
-    font-weight: 700;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    background-color: var(--mossie-accent1-bg); /* Applies the pink background */
+    color: var(--mossie-accent1-text);          /* Applies the darker pink text */
+    font-weight: 700;                           /* Makes the text bolder */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);   /* Adds a subtle shadow */
 }
 
 /* === Header (Site Title Area) === */
