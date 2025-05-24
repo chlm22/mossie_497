@@ -464,78 +464,93 @@ footer {
 }
 
 /* === Pet Page Styles === */
+/* === Pet Page Styles === */
 .pet-page-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; /* Grid will handle alignment now */
     padding: 1rem; /* General padding */
-    /* padding-bottom: 100px; /* REMOVE or adjust - no longer needed for fixed bottom bar */
-    min-height: calc(100vh - var(--nav-height) - 70px); /* Adjust 70px if footer height changes */
-    position: relative;
-    overflow-x: hidden;
+    /* padding-bottom: 100px; /* This was for a fixed bottom bar, likely not needed or less needed now */
+    min-height: calc(100vh - var(--nav-height) - 70px); /* Adjust 70px if footer height changes. Assumes footer ~70px */
+    position: relative; /* For positioning panels if they are not fixed globally */
+    overflow-x: hidden; /* Prevent horizontal scroll from panels sliding */
 }
 
-/* New Grid Layout for Pet and Side Buttons */
+/* Grid Layout for Pet and Side Buttons */
 .pet-layout-grid {
     display: grid;
     grid-template-columns: auto 1fr auto; /* Left buttons, Pet (flexible), Right buttons */
     align-items: center; /* Vertically align items in each column's center */
-    gap: 1.5rem; /* Space between columns (e.g., buttons and pet area) */
+    gap: 1.5rem; /* Space between columns (e.g., buttons and pet area). Adjust as needed. */
     width: 100%;
-    max-width: 700px; /* Max width for the whole pet + buttons layout */
-    margin: 0 auto; /* Center the grid on the page */
+    max-width: 750px; /* Max width for the whole pet + buttons layout. Adjust as needed. */
+    margin: 1rem auto; /* Center the grid on the page and add some top/bottom margin */
 }
 
 .pet-options-column {
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
-    align-items: center;   /* Center buttons in their column (optional) */
-    gap: 1.5rem;           /* Space between the two buttons in a column */
+    align-items: center; 
+    gap: 1.5rem; /* Space between the two buttons in a column */
 }
-/* .pet-options-left { /* Specific alignment if needed */ 
-/* .pet-options-right { /* Specific alignment if needed */ 
 
-
-/* Styles for the new Circular Interaction Buttons */
+/* Updated Styles for the White Circular Interaction Buttons with Icon and Text */
 .interaction-button-circle {
-    width: 70px;  /* Width of the circle */
-    height: 70px; /* Height of the circle (same as width) */
+    width: 85px;  /* Increased size for text + icon */
+    height: 85px; /* Increased size (same as width for circle) */
     border-radius: 50%; /* Makes it a circle */
-    background-color: var(--mossie-content-bg); /* White background, or a soft accent */
-    border: 2px solid var(--mossie-accent2-bg); /* Soft Teal border */
-    color: var(--mossie-text-dark);
+    
+    background-color: #FFFFFF; /* White background */
+    border: 1px solid #eaeaea; /* Very light grey subtle border for definition */
+    color: var(--mossie-text-dark); /* Default text color for icon */
     
     display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
     justify-content: center;
     align-items: center;
+    text-align: center; 
     
-    font-size: 1.8rem; /* Size of the emoji icon */
-    font-weight: 600; /* Not really needed for emojis */
+    padding: 0.5rem; /* Inner padding */
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* Softer shadow */
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.interaction-button-circle .button-icon {
+    font-size: 1.8rem; /* Emoji size */
+    display: block;
+    line-height: 1; 
+    margin-bottom: 2px; /* Tiny space between icon and text */
+}
+
+.interaction-button-circle .button-text {
+    font-size: 0.65rem; /* Small text for the name */
+    display: block;
+    line-height: 1.1; /* Allow text to wrap if slightly longer, adjust as needed */
+    font-weight: 600;
+    color: var(--mossie-text-medium); /* Slightly lighter text for the label */
+    max-width: 90%; /* Prevent text from overflowing too much */
 }
 
 .interaction-button-circle:hover,
 .interaction-button-circle:focus {
-    background-color: var(--mossie-accent2-bg); /* Soft Teal on hover/focus */
+    background-color: var(--mossie-bg); /* Very Light Pinkish Cream from your theme for hover */
+    /* border-color: var(--mossie-accent2-bg); /* Optional: Teal border on hover if you want more pop */
     color: var(--mossie-text-dark);
-    transform: scale(1.05); /* Slight zoom */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     outline: none;
 }
 .interaction-button-circle:focus-visible { /* For keyboard navigation */
     outline: 3px solid var(--focus-outline-color);
     outline-offset: 2px;
+    border-color: transparent; /* Hide regular border when focus outline is visible */
 }
 
 
-/* Keep these .pet-display-area styles (they are mostly fine) */
+/* Pet Display Area Styles (largely unchanged but ensure they work with grid) */
 .pet-display-area {
     text-align: center;
-    /* margin-bottom: 1.5rem; /* No longer needed if part of grid gap */
-    width: 100%; /* Will be constrained by grid column */
-    /* max-width: 400px; /* This can still apply if you want to limit pet area within its grid column */
+    width: 100%; /* Will be constrained by its grid column */
 }
 
 .pet-name {
@@ -547,22 +562,22 @@ footer {
 
 .pet-image-wrapper {
     width: 100%; 
-    max-width: 300px; /* Adjusted max-width for pet image */
+    max-width: 300px; 
     height: auto; 
     margin: 0 auto 0.75rem;
-    background-color: var(--mossie-accent2-bg); 
+    background-color: var(--mossie-accent2-bg); /* Soft Teal placeholder bg */
     border-radius: var(--border-radius-cute); 
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem; 
-    min-height: 200px; /* Adjusted min-height */
+    min-height: 250px; /* Ensure some height for the wrapper */
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .pet-image-wrapper img {
     max-width: 100%;
-    max-height: 230px; /* Adjusted max-height for pet image */
+    max-height: 230px; 
     object-fit: contain;
 }
 
@@ -571,6 +586,135 @@ footer {
     color: var(--mossie-text-medium);
     font-style: italic;
 }
+
+/* === Customization Panel Styles (ensure these are present) === */
+.customization-panel {
+    position: fixed;
+    top: 0; 
+    right: -100%; 
+    width: 100%; 
+    max-width: 350px; 
+    height: 100vh; 
+    background-color: var(--mossie-content-bg); 
+    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+    z-index: 1050; 
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+}
+
+.customization-panel.active-panel {
+    transform: translateX(-100%); 
+}
+.customization-panel[hidden] { 
+    display: none !important; 
+}
+.customization-panel.active-panel[hidden] { 
+    display: flex !important;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--mossie-accent2-bg); 
+    border-bottom: 1px solid #d0d0d0;
+    position: sticky; 
+    top: 0;
+    z-index: 1; 
+}
+.panel-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--mossie-text-dark);
+}
+.close-panel-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--mossie-text-medium);
+    cursor: pointer;
+    padding: 0.2rem;
+    line-height: 1;
+}
+.close-panel-btn:hover {
+    color: var(--mossie-text-dark);
+}
+
+.panel-content {
+    padding: 1rem;
+    flex-grow: 1;
+}
+.panel-content p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.item-category {
+    margin-bottom: 1.5rem;
+}
+.item-category h4 {
+    font-size: 1rem;
+    color: var(--mossie-text-dark);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #eee;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); 
+    gap: 0.75rem;
+}
+
+.item-thumbnail {
+    background-color: var(--mossie-bg); 
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-soft);
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.75rem;
+    color: var(--mossie-text-medium);
+    display: flex; /* For better alignment of content */
+    flex-direction: column;
+    justify-content: space-between; /* Push text to bottom if image is small */
+}
+.item-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.item-thumbnail img {
+    width: 100%;
+    max-width: 60px; 
+    height: 50px; /* Give a fixed height to align text better */
+    margin-bottom: 0.25rem;
+    object-fit: contain;
+    background-color: #fff; 
+    border-radius: 4px;
+    align-self: center; /* Center image */
+}
+.item-thumbnail span { /* The text name of the item */
+    margin-top: auto; /* Push text to bottom */
+}
+
+.item-thumbnail.locked {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.item-thumbnail.locked .lock-icon {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--mossie-text-light);
+    margin-top: 0.2rem;
+}
+
+
+
 /* === Customization Panel Styles === */
 .customization-panel {
     position: fixed;

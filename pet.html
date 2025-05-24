@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" type="text/css" href="css/html5reset.css">
     <link rel="stylesheet" href="css/style.css">
     <title>My Emotional Pet - Mossie</title>
@@ -23,19 +24,24 @@
                 <li><a href="index.html" title="home">home</a></li>
                 <li><a href="journal.html" title="journal">journal</a></li>
                 <li><a href="mood.html" title="mood">mood</a></li>
-                <li><a href="pet.html" title="pet" class="active">pet</a></li>
-            </ul>
+                <li><a href="pet.html" title="pet" class="active">pet</a></li> </ul>
         </nav>
-    </header>
+        </header>
 
     <main id="maincontent">
         <div class="pet-page-container">
+
             <div class="pet-layout-grid">
+
                 <div class="pet-options-column pet-options-left">
-                    <button id="pet-outfits-btn" class="interaction-button-circle" aria-label="Change Outfits"
-                        aria-controls="outfits-panel" aria-expanded="false">👕</button>
-                    <button id="pet-food-btn" class="interaction-button-circle" aria-label="Feed Pet"
-                        aria-controls="food-panel" aria-expanded="false">🍎</button>
+                    <button id="pet-outfits-btn" class="interaction-button-circle" aria-label="Change Outfits" aria-controls="outfits-panel" aria-expanded="false">
+                        <span class="button-icon">👕</span>
+                        <span class="button-text">Outfits</span>
+                    </button>
+                    <button id="pet-food-btn" class="interaction-button-circle" aria-label="Feed Pet" aria-controls="food-panel" aria-expanded="false">
+                        <span class="button-icon">🍎</span>
+                        <span class="button-text">Food</span>
+                    </button>
                 </div>
 
                 <div class="pet-display-area">
@@ -43,33 +49,86 @@
                     <div class="pet-image-wrapper">
                         <img src="images/your-pet-image.png" alt="My Emotional Pet, [Pet's Name]">
                     </div>
-                    <p class="pet-status-text">Mossie is feeling awesome today!</p>
+                    <p class="pet-status-text">Mossie is feeling loved!</p>
                 </div>
 
                 <div class="pet-options-column pet-options-right">
-                    <button id="pet-env-btn" class="interaction-button-circle" aria-label="Change Environment"
-                        aria-controls="environment-panel" aria-expanded="false">🌳</button>
-                    <button id="pet-change-btn" class="interaction-button-circle" aria-label="Change Pet Appearance"
-                        aria-controls="appearance-panel" aria-expanded="false">✨</button>
+                    <button id="pet-env-btn" class="interaction-button-circle" aria-label="Change Environment" aria-controls="environment-panel" aria-expanded="false">
+                        <span class="button-icon">🌳</span>
+                        <span class="button-text">Place</span>
+                    </button>
+                    <button id="pet-change-btn" class="interaction-button-circle" aria-label="Change Pet Appearance" aria-controls="appearance-panel" aria-expanded="false">
+                        <span class="button-icon">✨</span>
+                        <span class="button-text">Looks</span>
+                    </button>
                 </div>
 
+            </div> <div id="outfits-panel" class="customization-panel" role="dialog" aria-labelledby="outfits-title" hidden>
+                <div class="panel-header">
+                    <h3 id="outfits-title">Outfits</h3>
+                    <button class="close-panel-btn" aria-label="Close Outfits Panel">✕</button>
+                </div>
+                <div class="panel-content">
+                    <div class="item-category">
+                        <h4>Hats</h4>
+                        <div class="item-grid">
+                            <div class="item-thumbnail available"><img src="images/placeholder-item-hat.png" alt="Cool Hat"><span>Cool Hat</span></div>
+                            <div class="item-thumbnail locked"><img src="images/placeholder-item-locked.png" alt="Fancy Crown (Locked)"><span>Fancy Crown</span><span class="lock-icon">🔒 Journal more!</span></div>
+                            <div class="item-thumbnail available"><img src="images/placeholder-item-hat.png" alt="Beanie"><span>Beanie</span></div>
+                        </div>
+                    </div>
+                    <div class="item-category">
+                        <h4>Scarves</h4>
+                        <div class="item-grid">
+                            <div class="item-thumbnail available"><img src="images/placeholder-item-scarf.png" alt="Red Scarf"><span>Red Scarf</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="outfits-panel" class="customization-panel" role="dialog" aria-labelledby="outfits-title" hidden>
-            </div>
-            <div id="food-panel" class="customization-panel" role="dialog" aria-labelledby="food-title" hidden>
-            </div>
-            <div id="environment-panel" class="customization-panel" role="dialog" aria-labelledby="env-title" hidden>
-            </div>
-            <div id="appearance-panel" class="customization-panel" role="dialog" aria-labelledby="appearance-title"
-                hidden>
-            </div>
-        </div>
-    </main>
 
+            <div id="food-panel" class="customization-panel" role="dialog" aria-labelledby="food-title" hidden>
+                <div class="panel-header">
+                    <h3 id="food-title">Food & Care</h3>
+                    <button class="close-panel-btn" aria-label="Close Food Panel">✕</button>
+                </div>
+                <div class="panel-content">
+                    <p>Select food items to give to your pet!</p>
+                    <div class="item-grid">
+                         <div class="item-thumbnail available"><img src="images/placeholder-item-food.png" alt="Berry"><span>Berry</span></div>
+                        <div class="item-thumbnail available"><img src="images/placeholder-item-food.png" alt="Leafy Greens"><span>Leafy Greens</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="environment-panel" class="customization-panel" role="dialog" aria-labelledby="env-title" hidden>
+                <div class="panel-header">
+                    <h3 id="env-title">Environments</h3>
+                    <button class="close-panel-btn" aria-label="Close Environment Panel">✕</button>
+                </div>
+                <div class="panel-content">
+                    <p>Choose a new background for your pet!</p>
+                     <div class="item-grid">
+                         <div class="item-thumbnail available"><img src="images/placeholder-env-forest.png" alt="Forest Clearing"><span>Forest</span></div>
+                        <div class="item-thumbnail available"><img src="images/placeholder-env-room.png" alt="Cozy Room"><span>Cozy Room</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="appearance-panel" class="customization-panel" role="dialog" aria-labelledby="appearance-title" hidden>
+                <div class="panel-header">
+                    <h3 id="appearance-title">Change Appearance</h3>
+                    <button class="close-panel-btn" aria-label="Close Appearance Panel">✕</button>
+                </div>
+                <div class="panel-content">
+                    <p>Unlock new looks for your pet!</p>
+                    </div>
+            </div>
+
+        </div> </main>
+    
     <footer>
-        Made by Caleb, Katelyn, Caroline, Sara for EECS 497 SPRING 2025 @ Umich
+         Made by Caleb, Katelyn, Caroline, Sara for EECS 497 SPRING 2025 @ Umich
     </footer>
 
-</body>
-
+    </body>
 </html>
