@@ -1,19 +1,19 @@
-/* === CSS Custom Properties (Mossie Color Scheme) === */
+/* === CSS Custom Properties (Mossie Color Scheme - Accessibility Enhanced) === */
 :root {
     --mossie-bg: #E0FFFF;         /* Very Light Cyan/Aqua - Main page background */
     --mossie-header-bg: #CCEEFF;  /* Light Blue - Header/Nav background */
     --mossie-footer-bg: #E6D8FF;  /* Light Lavender - Footer background */
-    --mossie-accent1: #FFDDED;    /* Light Pink 1 - Active links, accents */
-    --mossie-accent2: #FFDDE2;    /* Light Pink 2 - Hover states, subtle accents */
+    --mossie-accent1: #FFDDED;    /* Light Pink 1 - Active links (bg), accents */
+    --mossie-accent2: #FFDDE2;    /* Light Pink 2 - Hover states (bg), subtle accents */
     --mossie-content-bg: #FFFFFF; /* White - For content boxes to pop */
 
-    --mossie-text-dark: #2c3e50;   /* Dark Muted Blue - Primary text */
+    --mossie-text-dark: #2c3e50;   /* Dark Muted Blue - Primary text, high contrast */
     --mossie-text-medium: #55606d; /* Medium Grey/Blue - Secondary text, headings */
-    --mossie-text-light: #7A8A99;  /* Lighter Grey - Subtle text, footer text if bg is dark */
-    --mossie-text-on-accent: #D170A0; /* Darker Pink - For text on light pink accents if needed */
+    /* --mossie-text-on-accent: #D170A0; /* Kept if needed for specific large text on light bg, but not for nav */
 
-    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif; /* Cleaner font suggestion */
-    --nav-height: 60px; /* Approximate height of the fixed nav for body padding */
+    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif;
+    --nav-height: 60px;
+    --focus-outline-color: #005A9C; /* A distinct blue for focus outlines */
 }
 
 /* === Global Resets & Base Styles === */
@@ -26,9 +26,9 @@
 }
 
 html {
-    font-size: 100%; /* Base for rem units */
+    font-size: 100%;
     scroll-behavior: smooth;
-    background-color: var(--mossie-bg); /* Main page background */
+    background-color: var(--mossie-bg);
 }
 
 body {
@@ -38,18 +38,18 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: var(--nav-height); /* Offset for fixed nav */
+    padding-top: var(--nav-height);
 }
 
 /* === Skip to Main Content === */
 .skip-main a {
     position: absolute;
-    left: -9999px; /* Hide off-screen */
+    left: -9999px;
     top: 10px;
     background-color: var(--mossie-accent1);
-    color: var(--mossie-text-dark);
+    color: var(--mossie-text-dark); /* Good contrast */
     padding: 0.75em 1em;
-    z-index: 1100; /* High z-index */
+    z-index: 1100;
     border-radius: 0 0 5px 5px;
     text-decoration: none;
     font-weight: 600;
@@ -57,45 +57,47 @@ body {
 }
 
 .skip-main a:focus {
-    left: 10px; /* Bring into view on focus */
+    left: 10px;
     top: 10px;
+    outline: 3px solid var(--focus-outline-color);
+    outline-offset: 2px;
 }
 
 
 /* === Navigation === */
-nav { /* Changed from nav ul for the fixed container */
+nav {
     background-color: var(--mossie-header-bg);
     position: fixed;
     top: 0;
-    left: 0; /* Ensure it spans full width */
+    left: 0;
     width: 100%;
     height: var(--nav-height);
-    z-index: 1000; /* Ensure nav is on top */
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 1rem; /* Horizontal padding for nav content */
+    padding: 0 1rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 nav ul {
     list-style-type: none;
-    display: flex; /* Let ul manage the li items */
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 nav li {
-    margin: 0 0.5rem; /* Spacing between nav items */
+    margin: 0 0.5rem;
 }
 
 nav li a {
     display: block;
-    color: var(--mossie-text-dark);
+    color: var(--mossie-text-dark); /* Good contrast on --mossie-header-bg */
     text-align: center;
-    padding: 0.75em 1em; /* Consistent padding */
+    padding: 0.75em 1em;
     text-decoration: none;
-    font-size: 0.9rem; /* Slightly smaller for nav */
+    font-size: 0.9rem;
     font-weight: 600;
     border-radius: 4px;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -103,74 +105,77 @@ nav li a {
 
 nav li a:hover {
     background-color: var(--mossie-accent2); /* Light Pink 2 */
+    color: var(--mossie-text-dark); /* Good contrast */
+}
+
+/* Enhanced focus style for nav links */
+nav li a:focus {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+    background-color: var(--mossie-accent2); /* Similar to hover for consistency */
     color: var(--mossie-text-dark);
 }
 
 nav li a.active {
     background-color: var(--mossie-accent1); /* Light Pink 1 */
-    color: var(--mossie-text-on-accent); /* Darker pink for contrast */
+    color: var(--mossie-text-dark); /* CHANGED: Was --mossie-text-on-accent. Now high contrast. */
     font-weight: 700;
 }
 
 /* === Header (Site Title Area) === */
-header { /* This is the container for your main h1 site title */
-    padding: 2rem 1rem; /* Space above/below site title */
+header {
+    padding: 2rem 1rem;
     text-align: center;
-    /* background-color: var(--mossie-bg); Ensure it blends or has distinct style */
 }
 
-header h1 { /* Main site title */
-    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
-    color: var(--mossie-text-dark);
+header h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--mossie-text-dark); /* Good contrast on --mossie-bg (if header is transparent) or its own bg */
     letter-spacing: 2px;
     margin: 0;
 }
-/* Specific page title (if different from main site title) */
-h1#peth1 { /* Example for pet page h1 if needs specific styling */
-    padding-top: 1rem; /* Adjust if fixed nav padding isn't enough */
+h1#peth1 {
+    padding-top: 1rem;
 }
 
 
 /* === Main Content Wrapper === */
 main {
-    flex-grow: 1; /* Takes up remaining vertical space */
+    flex-grow: 1;
     width: 100%;
-    padding: 1rem 0; /* Vertical padding for main area */
+    padding: 1rem 0;
 }
 
-/* Your .main class for content blocks, or .container */
-.main, .container { /* Assuming .main is used like .container */
-    max-width: 960px; /* Max width for content readability */
-    margin: 1.5rem auto; /* Centering and vertical space */
+.main, .container {
+    max-width: 960px;
+    margin: 1.5rem auto;
     padding: 1.5rem;
-    background-color: var(--mossie-content-bg); /* White for content */
+    background-color: var(--mossie-content-bg); /* White */
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(44, 62, 80, 0.08);
 }
 
-/* Headings within content */
 .main h2, .container h2 {
     font-size: clamp(1.4rem, 4vw, 1.8rem);
-    color: var(--mossie-text-medium);
+    color: var(--mossie-text-medium); /* Good contrast on white */
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    /* border-bottom: 2px solid var(--mossie-accent2); */ /* Optional accent */
     text-align: center;
     letter-spacing: 1px;
 }
 .main h3, .container h3 {
     font-size: clamp(1.2rem, 3vw, 1.5rem);
-    color: var(--mossie-text-medium);
+    color: var(--mossie-text-medium); /* Good contrast on white */
     margin-bottom: 0.75rem;
 }
 
 
-/* === Specific Content Sections (Generalizing your #other-page-* ) === */
-/* This can be used for any distinct informational or feature callout boxes */
+/* === Feature Box (General Purpose) === */
 .feature-box {
     font-size: 0.9rem;
     font-weight: 600;
-    background-color: var(--mossie-accent2); /* Light Pink 2 or another subtle accent */
+    background-color: var(--mossie-accent2); /* Light Pink 2 */
+    color: var(--mossie-text-dark); /* Ensure text here has good contrast */
     padding: 1.5rem;
     text-align: center;
     border-radius: 6px;
@@ -183,20 +188,39 @@ main {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(44,62,80,0.1);
 }
+.feature-box a:focus { /* Example if links are inside feature boxes */
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 1px;
+    background-color: var(--mossie-accent1); /* different from feature-box bg */
+}
+
 
 /* === Footer === */
 footer {
     background-color: var(--mossie-footer-bg); /* Light Lavender */
-    color: var(--mossie-text-medium);
+    color: var(--mossie-text-dark); /* CHANGED: Was --mossie-text-medium. Now higher contrast. */
     text-align: center;
     padding: 1.5rem 1rem;
     font-size: 0.85rem;
-    margin-top: auto; /* Pushes footer to bottom in flex container */
+    margin-top: auto;
 }
 
 /* === Utility Classes === */
 .text-center { text-align: center; }
-.hidden { display: none; }
+.hidden { display: none; } /* For visually hiding content meant for screen readers, use with caution or a more robust class */
+
+/* A more robust visually hidden class for accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
 
 
 /* === Media Queries - Refinements & Integration === */
@@ -205,71 +229,50 @@ footer {
     html {
         scroll-behavior: auto;
     }
-    .skip-main a, nav li a, .feature-box { /* Disable transitions */
+    .skip-main a, nav li a, .feature-box {
       transition: none;
      }
-    /* Your .animation class would go here if needed */
 }
 
 @media screen and (min-width: 765px) {
-    nav ul {
-        /* justify-content: space-around; /* Already centered, can adjust if more items */
-    }
     nav li a {
         padding: 0.75em 1.2em;
         font-size: 1rem;
     }
 
-    header h1 { /* Main site title */
-       /* font-size: 2.8rem; /* Example adjustment */
-    }
-    .main h2, .container h2 { /* Content headings */
-        text-align: left; /* As per your original */
-        /* font-size: 2rem; */
+    .main h2, .container h2 {
+        text-align: left;
     }
 
     .feature-box {
         font-size: 1rem;
-        padding: 2rem; /* More padding on larger screens */
+        padding: 2rem;
     }
-    .feature-box:hover{ /* Your original hover for these boxes */
-        color: var(--mossie-text-medium); /* Keep text readable */
-        border: 2px solid var(--mossie-text-dark); /* Darker border for clarity */
-        /* background-color: var(--mossie-header-bg);  Light Blue background on hover */
+    .feature-box:hover{
+        color: var(--mossie-text-dark); /* Ensure hover doesn't reduce contrast */
+        border: 2px solid var(--mossie-text-dark);
     }
 }
 
 @media screen and (min-width: 1020px) {
-    /* Optional: Limit overall site width for very large screens */
-    /* body { max-width: 1400px; margin-left: auto; margin-right: auto; } */
-    
-    /* If you want nav content to be 80% of viewport */
-    nav .nav-content-wrapper { /* Add a div inside nav with this class if you want to constrain nav content width */
+    nav .nav-content-wrapper { /* Add a div with this class inside nav to constrain nav content width */
         width: 80%;
         /* max-width: 1200px; /* Also good to have a max pixel width */
     }
-    /* The fixed nav itself should remain 100% width of viewport */
 
     header h1 {
-        /* font-size: 3rem; */
-        padding: 3rem 0 1.5rem 0; /* Adjust site title padding */
+        padding: 3rem 0 1.5rem 0;
     }
 
     .main, .container {
         padding: 2rem;
-        /* margin-top: 2rem; As per your styles, if you need grid for top-level page sections */
     }
-    /* If .container is for a 3-column layout of feature boxes: */
-    .container.feature-grid { /* Add .feature-grid to your container div */
+    .container.feature-grid { /* Add .feature-grid to your container div for a 3-column layout of feature boxes */
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem; /* Your grid-gap */
+        gap: 1.5rem;
     }
-    .container.feature-grid > .feature-box { /* Target feature boxes inside this grid */
+    .container.feature-grid > .feature-box { /* Target feature boxes inside this specific grid */
          border: 2px solid var(--mossie-header-bg); /* Example border */
-    }
-
-    .main h2, .container h2 { /* Content headings */
-        /* padding: 2rem 3rem; */ /* Adjust padding */
     }
 }
