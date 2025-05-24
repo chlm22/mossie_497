@@ -463,6 +463,217 @@ footer {
     outline: none;
 }
 
+/* === Pet Page Styles === */
+.pet-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding: 1rem;
+    padding-bottom: 100px; /* Space for the fixed interaction bar at the bottom */
+    min-height: calc(100vh - var(--nav-height) - 70px); /* Adjust 70px if footer height changes */
+    position: relative; /* For positioning panels if needed */
+    overflow-x: hidden; /* Prevent horizontal scroll from panels sliding */
+}
+
+.pet-display-area {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 400px; /* Max width for the pet display */
+}
+
+.pet-name {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: var(--mossie-text-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.pet-image-wrapper {
+    width: 100%; /* Or a fixed size like 300px */
+    max-width: 350px;
+    height: auto; /* Or a fixed size like 300px */
+    margin: 0 auto 0.75rem;
+    background-color: var(--mossie-accent2-bg); /* Soft Teal as a placeholder background */
+    border-radius: var(--border-radius-cute); /* Rounded background for pet */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem; /* If pet image is smaller than wrapper */
+    min-height: 250px; /* Ensure some height */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.pet-image-wrapper img {
+    max-width: 100%;
+    max-height: 280px; /* Max height for the pet image */
+    object-fit: contain;
+}
+
+.pet-status-text {
+    font-size: 0.95rem;
+    color: var(--mossie-text-medium);
+    font-style: italic;
+}
+
+.pet-interaction-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--mossie-header-bg); /* Light Pink, like nav */
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    justify-content: space-around; /* Distribute buttons evenly */
+    align-items: center;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    z-index: 1000; /* Same as nav, ensure it's above panels when they are not full screen */
+}
+
+.interaction-button {
+    background-color: transparent;
+    border: 2px solid transparent; /* For spacing, becomes visible on focus */
+    color: var(--mossie-text-dark);
+    padding: 0.5em 0.6em; /* Adjust for icon + text or just icon */
+    border-radius: var(--border-radius-soft);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem; /* Smaller for more buttons */
+    text-align: center;
+    min-width: 70px; /* Ensure buttons have some width */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.interaction-button:hover,
+.interaction-button:focus {
+    background-color: var(--mossie-accent1-bg); /* Saturated Pink */
+    color: var(--mossie-accent1-text);
+    outline: none;
+}
+.interaction-button:focus-visible {
+    border-color: var(--focus-outline-color);
+}
+
+/* === Customization Panel Styles === */
+.customization-panel {
+    position: fixed;
+    top: 0; /* Or var(--nav-height) if nav shouldn't be covered */
+    right: -100%; /* Start off-screen to the right */
+    width: 100%; /* Full width on small screens */
+    max-width: 350px; /* Max width on larger screens */
+    height: 100vh; /* Full viewport height */
+    /* Or height: calc(100vh - var(--nav-height)); if nav shouldn't be covered */
+    background-color: var(--mossie-content-bg); /* White */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+    z-index: 1050; /* Above interaction bar and page content */
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth slide */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow panel content to scroll */
+}
+
+/* JavaScript will toggle this class to show the panel */
+.customization-panel.active-panel {
+    transform: translateX(-100%); /* Slide in from right */
+    /* If sliding from left, it would be left: -100%; transform: translateX(100%); */
+}
+.customization-panel[hidden] { /* Keep hidden attribute functional */
+    display: none !important; /* Override display:flex if hidden is used first */
+}
+.customization-panel.active-panel[hidden] { /* If JS removes hidden AND adds active-panel */
+    display: flex !important;
+}
+
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--mossie-accent2-bg); /* Soft Teal for panel header */
+    border-bottom: 1px solid #d0d0d0;
+    position: sticky; /* Keep header at top of scrolling panel */
+    top: 0;
+    z-index: 1; /* Above panel content */
+}
+.panel-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--mossie-text-dark);
+}
+.close-panel-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--mossie-text-medium);
+    cursor: pointer;
+    padding: 0.2rem;
+    line-height: 1;
+}
+.close-panel-btn:hover {
+    color: var(--mossie-text-dark);
+}
+
+.panel-content {
+    padding: 1rem;
+    flex-grow: 1;
+}
+.panel-content p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.item-category {
+    margin-bottom: 1.5rem;
+}
+.item-category h4 {
+    font-size: 1rem;
+    color: var(--mossie-text-dark);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #eee;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Responsive grid for items */
+    gap: 0.75rem;
+}
+
+.item-thumbnail {
+    background-color: var(--mossie-bg); /* Light Cyan/Aqua for item background */
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-soft);
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.75rem;
+    color: var(--mossie-text-medium);
+}
+.item-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.item-thumbnail img {
+    width: 100%;
+    max-width: 60px; /* Max size of item preview image */
+    height: auto;
+    margin-bottom: 0.25rem;
+    object-fit: contain;
+    background-color: #fff; /* If images have transparent parts */
+    border-radius: 4px;
+}
+.item-thumbnail.locked {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.item-thumbnail.locked .lock-icon {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--mossie-text-light);
+    margin-top: 0.2rem;
+}
 
 /* === Media Queries - Refinements & Integration === */
 
