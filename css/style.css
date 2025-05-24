@@ -1,0 +1,550 @@
+
+.skip-main a{
+    position: absolute;
+    top: -40px;
+    color: #D1E8FC;
+    z-index: 10;
+}
+
+.skip-main a:focus{
+    color: #D1E8FC;
+    background-color: #000000;
+    top: 20px;
+    position: absolute;
+    z-index: 10;
+}
+
+html{
+    background-image: linear-gradient(120deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
+padding: 0;
+top: 0;
+bottom: 0;
+
+}
+
+body{
+    color:#000000;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+
+}
+
+nav ul{
+    background-image: linear-gradient(20deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
+    list-style-type: none;
+    position: fixed;
+    top: 0;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow:visible;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+}
+
+nav li{
+    display: inline;
+    float:right;
+}
+
+nav li a{
+    display: block;
+    color:#000000;
+    text-align: center;
+    padding: 12px;
+    border:  1px;
+    text-decoration: none;
+    font-size: small;
+    font-weight: 600;
+}
+
+nav li a:hover{
+    color:#808080;
+    text-decoration: dotted;
+    border: #000000 solid 2px;
+    
+}
+
+.active {
+    background-color: #D1E8FC;
+    color: #000000;
+    padding: 1 rem;
+    top: 0;
+    border: 1px;
+}
+
+header h1{
+    font-size: 30px;
+    margin:0;
+    padding: 5rem 0.25rem 2rem 0.25rem;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+/* #map { height: 180px; } */
+
+main div.main h2{
+    font-size: 20px;
+    margin: 0;
+    padding: 10px 8px 17px 8px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+div.container{
+    display:grid;
+    grid-template-columns: 1fr;
+    margin: 25px auto;
+    color: #000000;
+    overflow: hidden;
+}
+
+#other-page-travel{
+    font-size: small;
+    font-weight: 600;
+    background-image: linear-gradient(40deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
+    padding: 25px;
+    text-align: center;
+}
+
+#other-page-travel:hover{
+    color:#ffffff;
+}
+
+#other-page-pets{
+    font-size: small;
+    font-weight: 600;
+    background-image: linear-gradient(40deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
+    padding: 25px;
+    text-align: center;
+}
+#other-page-pets:hover{
+    color:#ffffff;
+}
+
+#other-page-cooking{
+    font-size: small;
+    font-weight: 600;
+    background-image: linear-gradient(140deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
+    padding: 25px;
+    text-align: center;
+}
+
+#other-page-cooking:hover{
+    color:#ffffff;
+}
+
+footer{
+    text-align: right;
+    margin: 0px 3px 10px 0px;
+    color:#808080;
+    align-content:right;
+    font-size: x-small;
+}
+
+.animal-container{
+    letter-spacing: 2px;
+    padding: 0px 10px 5px 10px;
+    color: #000000;
+    font-size:12px;
+}
+
+img{
+    width: 150px;
+    height: 160px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+ul{
+    line-height: 20px;
+    letter-spacing: 2px;
+}
+
+.animal-container h2{
+    font-weight: 900;
+    text-decoration:underline;
+    text-align: center;
+    margin-top: 0px;
+}
+
+div#cat-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+}
+#cat1{
+    grid-row-start: 1;
+    margin: 50px;
+}
+
+#cat2{
+    grid-row-start: 2;
+}
+
+#cat3{
+    grid-row-start: 4;
+    margin-bottom: 40px;
+}
+#cat4{
+    grid-column-start: 1;
+    grid-row-start: 3;
+    margin: 50px;
+}
+
+#rabbit-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+}
+
+#r1{
+    grid-row-start: 1;
+    margin: 30px;
+}
+
+#r2{
+    grid-row-start: 2;
+}
+
+#r3{
+    grid-row-start: 4;
+    margin-bottom: 40px;
+}
+#r4{
+    grid-column-start: 1;
+    grid-row-start: 3;
+    margin: 50px;
+}
+
+#guineapig-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+}
+#gp1{
+    grid-row-start: 1;
+    margin: 30px;
+}
+
+#gp2{
+    grid-row-start: 2;
+}
+
+#gp3{
+    grid-row-start: 4;
+}
+    
+#gp4{
+    grid-column-start: 1;
+    grid-row-start: 3;
+    margin: 50px;
+}
+
+    .animal-container, .recipe-container, .travel-container{
+        margin: 20px;
+
+    }
+
+@media screen and (prefers-reduced-motion: reduce) {
+    .animation {
+      animation: dissolve 4s linear infinite both;
+      text-decoration: overline;
+      background-color:#D1E8FC;
+    }
+    html{
+        scroll-behavior: auto; /* Removes scroll animation */
+    }
+  
+    .skip a{
+      -webkit-transition: none; /* sets to default setting */
+      transition: none;        /* sets to default setting */
+     }
+  }
+
+  @media screen and (min-width: 765px){
+
+    .skip-main a{
+        position: absolute;
+        top: -40px;
+        color: #D1E8FC;
+        z-index: -10;
+        transition:cubic-bezier(1, 0, 0, 1);
+        -webkit-transition: top 1s ease-out;
+        /* I dont know how to get rid of the squigglyline */
+        /* but the code seems to work... so idk what that means */
+    }
+    
+    .skip-main a:focus{
+        color: #D1E8FC;
+        background-color: #000000;
+        height: 70px;
+        width: 100px;   
+        text-align:center;
+        left: 15px;
+        top: 65px;  
+        position: absolute;
+        z-index: 10;
+        font-weight: 700;
+    }
+
+    nav ul{
+        font-size: small;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    nav li a{
+        padding: 18px 50px;
+        font-size: medium;
+        font-weight: 600;
+    }
+
+    .active {
+        border: 3px black solid;
+    }
+
+    header h1{
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+    main div.main h2{
+        font-size: 20px;
+        padding: 12px 50px;
+        text-align:left;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+    
+    div.container{
+        margin: 40px auto 15px auto;
+    }
+    
+    div#other-page-travel{
+        font-size: large;
+        font-weight: 900;
+        padding: 100px;
+    }
+    
+    div#other-page-travel:hover{
+        color: #808080;
+        border: 3px black solid;
+        background-color: #D1E8FC;
+    }
+    
+    #other-page-pets{
+        font-size: large;
+        font-weight: 900;
+        padding: 100px;
+    }
+    div#other-page-pets:hover{
+        color:#808080;
+        border: 3px black solid;
+    }
+    
+    #other-page-cooking{
+        font-size: large;
+        font-weight: 900;
+        padding: 100px;
+    }
+    
+    div#other-page-cooking:hover{
+     color:#808080;
+        border: 3px black solid;
+    }
+
+    
+    footer{
+        margin: 0px 8px 8px 0px;
+    }
+    
+    .animal-container, .recipe-container, .travel-container{
+        letter-spacing: 2px;
+        padding: 5px 10px 50px 10px;
+        color: #000000;
+    }
+    
+    .image-recipe, .image-travel{
+        height: 400px;
+        width: 360px;
+    }
+
+    .recipe-title, .travel-title{
+        font-weight: 900;
+        font-size: xx-large;
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .recipe-div, .travel-div{
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .recipe, .location-characteristics{
+        font-size: medium;
+    }
+    
+    ul{
+        line-height: 20px;
+        letter-spacing: 2px;
+    }
+    
+    div.animal-container h2{
+        font-weight: 900;
+        text-decoration:underline;
+        font-size: 40px;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    #cat-container, #rabbit-container, #guineapig-container{
+        display: grid;
+        place-items: center;
+    }
+    
+    .cat3title, .rabbit3title, .gp3title{
+        font-weight: 700;
+        font-size: larger;
+        list-style-type: none;
+    }
+    h1#peth1{
+        padding-top: 8rem;
+    }
+    div.animal-container h2{
+        padding:0px;
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+
+    div#cat-container{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 15px;
+        height: 30rem;
+        padding-bottom: 40px;
+    }
+
+    #cat2{
+        grid-row-start: 2;
+        grid-column-start: 1;
+    }
+
+    #cat4{
+        grid-row-start: 1;
+        grid-column-start: 2;
+    }
+
+    #cat3{
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+
+    div#rabbit-container{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 15px;
+        height: 30rem;
+        padding-bottom: 40px;
+    }
+
+    #r2{
+        grid-row-start: 2;
+        grid-column-start: 1;
+    }
+
+    #r4{
+        grid-row-start: 1;
+        grid-column-start: 2;
+    }
+
+    #r3{
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+
+    div#guineapig-container{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 15px;
+        height: 30rem;
+        padding-bottom: 40px;
+    }
+
+    #gp2{
+        grid-row-start: 2;
+        grid-column-start: 1;
+    }
+
+    #gp4{
+        grid-row-start: 1;
+        grid-column-start: 2;
+    }
+
+    #gp3{
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+
+  }
+
+
+  @media screen and (min-width: 1020px){
+    header h1 {
+        font-size: 40px;
+        letter-spacing: 2px;
+        padding: 10rem 0.25rem 2rem 0.25rem;
+    }
+    nav, body, nav ul{
+        width: 80%;
+    }
+
+    main{
+        padding-bottom: 5rem;
+    }
+
+
+    div.container{
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 5rem;
+        grid-gap: 2rem;
+    }
+    div.container > div{
+
+        border: white solid 2px;
+    }
+
+
+    main div.main h2 {
+        font-size: 20px;
+        padding: 30px 90px 50px 90px;
+        text-align: left;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+
+div.animal-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow:scroll;
+    overflow-x:scroll;
+}
+
+div.animal-container h2 {
+    text-decoration: none;
+}
+
+
+    footer{
+    position:static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    }
+  }
