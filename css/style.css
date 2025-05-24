@@ -237,6 +237,43 @@ footer {
   border: 0;
 }
 
+/* === Corner Emotional Pet Accent (Circular) === */
+.emotional-pet-corner-accent {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 90px;
+    height: 90px;
+    z-index: 999;
+    background-color: #FFFFFF; /* White background for the circle */
+    border-radius: 50%;      /* Makes the container a circle */
+    padding: 10px;           /* Space between pet image and edge of the circle */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15); /* Softer shadow for the circle */
+    display: flex;           /* Used to help center the image inside */
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.emotional-pet-corner-accent img {
+    max-width: 100%;         /* Image takes full width of the padded area */
+    max-height: 100%;        /* Image takes full height of the padded area */
+    display: block;          /* Removes extra space */
+    object-fit: contain;     /* Ensures the whole pet is visible within its space */
+}
+
+.emotional-pet-corner-accent:hover {
+    transform: scale(1.12) translateY(-4px) rotate(5deg); /* Slightly more bounce and tilt */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* --- Optional: Hide on very small screens if it gets in the way --- */
+@media (max-width: 480px) {
+    .emotional-pet-corner-accent {
+        display: none;
+    }
+}
+
 
 /* === Media Queries - Refinements & Integration === */
 
