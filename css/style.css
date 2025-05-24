@@ -1,431 +1,275 @@
-/* --- Global Styles --- */
-.skip-main a {
-    position: absolute;
-    top: -40px;
-    color: #87CEFA; /* Softer light blue */
-    z-index: 10;
-    transition: top 0.3s ease; /* Smooth transition */
+/* === CSS Custom Properties (Mossie Color Scheme) === */
+:root {
+    --mossie-bg: #E0FFFF;         /* Very Light Cyan/Aqua - Main page background */
+    --mossie-header-bg: #CCEEFF;  /* Light Blue - Header/Nav background */
+    --mossie-footer-bg: #E6D8FF;  /* Light Lavender - Footer background */
+    --mossie-accent1: #FFDDED;    /* Light Pink 1 - Active links, accents */
+    --mossie-accent2: #FFDDE2;    /* Light Pink 2 - Hover states, subtle accents */
+    --mossie-content-bg: #FFFFFF; /* White - For content boxes to pop */
+
+    --mossie-text-dark: #2c3e50;   /* Dark Muted Blue - Primary text */
+    --mossie-text-medium: #55606d; /* Medium Grey/Blue - Secondary text, headings */
+    --mossie-text-light: #7A8A99;  /* Lighter Grey - Subtle text, footer text if bg is dark */
+    --mossie-text-on-accent: #D170A0; /* Darker Pink - For text on light pink accents if needed */
+
+    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif; /* Cleaner font suggestion */
+    --nav-height: 60px; /* Approximate height of the fixed nav for body padding */
 }
 
-.skip-main a:focus {
-    color: #FFFFFF; /* White for contrast */
-    background-color: #5F9EA0; /* Softer dark blue-green */
-    top: 20px;
-    position: absolute;
-    z-index: 10;
-    font-weight: 700;
-    padding: 8px 15px;
-    border-radius: 5px;
+/* === Global Resets & Base Styles === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-    /* Softer, pastel gradient inspired by original but lighter */
-    background-image: linear-gradient(120deg, #CCEEFF, #FFDDED, #FFDDE2, #E0FFFF, #E6D8FF);
-    padding: 0;
-    top: 0;
-    bottom: 0;
-    min-height: 100vh; /* Ensure html covers full viewport height */
+    font-size: 100%; /* Base for rem units */
+    scroll-behavior: smooth;
+    background-color: var(--mossie-bg); /* Main page background */
 }
 
 body {
-    color: #333333; /* Softer black/dark grey */
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif; /* A more modern, friendly font */
-    margin: 0 auto;
+    font-family: var(--font-primary);
+    color: var(--mossie-text-dark);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: var(--nav-height); /* Offset for fixed nav */
 }
 
-/* --- Header & Navigation --- */
-header {
-    background-image: linear-gradient(20deg, #CCEEFF, #FFDDED, #FFDDE2, #E0FFFF, #E6D8FF);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* === Skip to Main Content === */
+.skip-main a {
+    position: absolute;
+    left: -9999px; /* Hide off-screen */
+    top: 10px;
+    background-color: var(--mossie-accent1);
+    color: var(--mossie-text-dark);
+    padding: 0.75em 1em;
+    z-index: 1100; /* High z-index */
+    border-radius: 0 0 5px 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.skip-main a:focus {
+    left: 10px; /* Bring into view on focus */
+    top: 10px;
+}
+
+
+/* === Navigation === */
+nav { /* Changed from nav ul for the fixed container */
+    background-color: var(--mossie-header-bg);
     position: fixed;
     top: 0;
+    left: 0; /* Ensure it spans full width */
     width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    z-index: 1000; /* Ensure it stays on top */
-    box-sizing: border-box; /* Include padding in width */
+    height: var(--nav-height);
+    z-index: 1000; /* Ensure nav is on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem; /* Horizontal padding for nav content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.site-title {
-    font-size: 28px; /* Slightly larger for main title */
-    margin: 0;
-    color: #4682B4; /* Steely blue, contrasts well */
-    letter-spacing: 2px;
+nav ul {
+    list-style-type: none;
+    display: flex; /* Let ul manage the li items */
+    justify-content: center;
+    align-items: center;
+}
+
+nav li {
+    margin: 0 0.5rem; /* Spacing between nav items */
+}
+
+nav li a {
+    display: block;
+    color: var(--mossie-text-dark);
+    text-align: center;
+    padding: 0.75em 1em; /* Consistent padding */
+    text-decoration: none;
+    font-size: 0.9rem; /* Slightly smaller for nav */
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav li a:hover {
+    background-color: var(--mossie-accent2); /* Light Pink 2 */
+    color: var(--mossie-text-dark);
+}
+
+nav li a.active {
+    background-color: var(--mossie-accent1); /* Light Pink 1 */
+    color: var(--mossie-text-on-accent); /* Darker pink for contrast */
     font-weight: 700;
 }
 
-/* Hamburger Menu Icon */
-.hamburger-menu {
-    display: flex; /* Initially show for mobile */
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001; /* Above nav links */
+/* === Header (Site Title Area) === */
+header { /* This is the container for your main h1 site title */
+    padding: 2rem 1rem; /* Space above/below site title */
+    text-align: center;
+    /* background-color: var(--mossie-bg); Ensure it blends or has distinct style */
 }
 
-.hamburger-icon {
-    width: 100%;
-    height: 3px;
-    background-color: #4682B4; /* Steely blue */
-    border-radius: 2px;
-    transition: all 0.3s linear;
-    transform-origin: 1px;
-}
-
-.hamburger-menu[aria-expanded="true"] .hamburger-icon:nth-child(1) {
-    transform: rotate(45deg);
-}
-
-.hamburger-menu[aria-expanded="true"] .hamburger-icon:nth-child(2) {
-    opacity: 0;
-    transform: translateX(20px);
-}
-
-.hamburger-menu[aria-expanded="true"] .hamburger-icon:nth-child(3) {
-    transform: rotate(-45deg);
-}
-
-
-/* Main Navigation */
-.main-nav ul {
-    list-style-type: none;
+header h1 { /* Main site title */
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+    color: var(--mossie-text-dark);
+    letter-spacing: 2px;
     margin: 0;
-    padding: 0;
-    display: none; /* Hidden by default on small screens */
-    flex-direction: column;
-    position: absolute;
-    top: 60px; /* Below header */
-    left: 0;
-    width: 100%;
-    background-image: linear-gradient(20deg, #CCEEFF, #FFDDED, #FFDDE2, #E0FFFF, #E6D8FF); /* Match header background */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    border-top: 1px solid rgba(0,0,0,0.05);
 }
-
-.main-nav ul.show {
-    display: flex; /* Show when 'show' class is added by JS */
-}
-
-.main-nav li {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle separator */
-}
-
-.main-nav li:last-child {
-    border-bottom: none;
-}
-
-.main-nav li a {
-    display: block;
-    color: #4682B4; /* Steely blue */
-    padding: 15px 20px;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.main-nav li a:hover {
-    background-color: #E0FFFF; /* Lighter background on hover */
-    color: #333333;
-}
-
-.main-nav .active {
-    background-color: #E0FFFF; /* Active item background */
-    color: #333333;
-    border-left: 5px solid #87CEFA; /* Highlight active item */
+/* Specific page title (if different from main site title) */
+h1#peth1 { /* Example for pet page h1 if needs specific styling */
+    padding-top: 1rem; /* Adjust if fixed nav padding isn't enough */
 }
 
 
-/* --- Main Content Section --- */
+/* === Main Content Wrapper === */
 main {
-    padding-top: 80px; /* Space for fixed header */
-    padding-bottom: 5rem;
+    flex-grow: 1; /* Takes up remaining vertical space */
+    width: 100%;
+    padding: 1rem 0; /* Vertical padding for main area */
 }
 
-/* Hero Section */
-.hero-section {
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+/* Your .main class for content blocks, or .container */
+.main, .container { /* Assuming .main is used like .container */
+    max-width: 960px; /* Max width for content readability */
+    margin: 1.5rem auto; /* Centering and vertical space */
+    padding: 1.5rem;
+    background-color: var(--mossie-content-bg); /* White for content */
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(44, 62, 80, 0.08);
+}
+
+/* Headings within content */
+.main h2, .container h2 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    color: var(--mossie-text-medium);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    /* border-bottom: 2px solid var(--mossie-accent2); */ /* Optional accent */
     text-align: center;
-    background-color: #FFFACD; /* Light pastel yellow for a soft feel */
+    letter-spacing: 1px;
+}
+.main h3, .container h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--mossie-text-medium);
+    margin-bottom: 0.75rem;
 }
 
-.hero-content h2 {
-    font-size: 2.2em;
-    color: #4682B4;
-    margin-bottom: 15px;
-}
 
-.hero-content p {
-    font-size: 1.1em;
-    color: #555555;
-    max-width: 700px;
-    margin: 0 auto 25px auto;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px; /* Slightly rounded corners */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Feature Section */
-.features-section {
-    padding: 60px 20px;
+/* === Specific Content Sections (Generalizing your #other-page-* ) === */
+/* This can be used for any distinct informational or feature callout boxes */
+.feature-box {
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--mossie-accent2); /* Light Pink 2 or another subtle accent */
+    padding: 1.5rem;
     text-align: center;
-    background-color: #F8F8FF; /* Off-white for a clean look */
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.features-section h3 {
-    font-size: 1.8em;
-    color: #4682B4;
-    margin-bottom: 40px;
+.feature-box:hover {
+    color: var(--mossie-text-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(44,62,80,0.1);
 }
 
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.feature-item {
-    background-color: #FFFFFF;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-}
-
-.feature-item:hover {
-    transform: translateY(-5px); /* Subtle lift on hover */
-}
-
-.feature-item img {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 20px;
-    border-radius: 0; /* Icons typically don't need border-radius */
-}
-
-.feature-item h4 {
-    font-size: 1.3em;
-    color: #5F9EA0; /* Softer dark blue-green */
-    margin-bottom: 10px;
-}
-
-.feature-item p {
-    font-size: 1em;
-    color: #666666;
-}
-
-/* Call to Action Section */
-.cta-section {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #E0FFFF; /* Light pastel blue for a calming CTA */
-}
-
-.cta-section h3 {
-    font-size: 2em;
-    color: #4682B4;
-    margin-bottom: 20px;
-}
-
-.cta-section p {
-    font-size: 1.1em;
-    color: #555555;
-    margin-bottom: 30px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Buttons */
-.button {
-    display: inline-block;
-    background-color: #87CEFA; /* Softer light blue */
-    color: white;
-    padding: 15px 35px;
-    border-radius: 30px; /* More rounded for a friendlier feel */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none; /* Remove default button border */
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #5F9EA0; /* Deeper blue-green on hover */
-    transform: translateY(-2px);
-}
-
-/* --- Footer --- */
+/* === Footer === */
 footer {
-    text-align: center; /* Center align for a cleaner look */
-    margin-top: 40px; /* Space from main content */
-    padding: 20px;
-    color: #777777; /* Softer grey */
-    font-size: 0.85em;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: var(--mossie-footer-bg); /* Light Lavender */
+    color: var(--mossie-text-medium);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.85rem;
+    margin-top: auto; /* Pushes footer to bottom in flex container */
 }
 
-/* --- Media Queries for Responsiveness --- */
+/* === Utility Classes === */
+.text-center { text-align: center; }
+.hidden { display: none; }
 
-/* Tablet and larger screens (desktop navigation) */
-@media screen and (min-width: 768px) {
-    header {
-        padding: 20px 40px;
-    }
 
-    .site-title {
-        font-size: 32px;
-    }
+/* === Media Queries - Refinements & Integration === */
 
-    .hamburger-menu {
-        display: none; /* Hide hamburger on larger screens */
-    }
-
-    .main-nav ul {
-        display: flex; /* Show nav items as row */
-        flex-direction: row;
-        position: static; /* Remove fixed positioning */
-        width: auto;
-        box-shadow: none;
-        border-top: none;
-        background-image: none; /* No background gradient for desktop nav */
-        margin-left: auto; /* Push nav to right */
-    }
-
-    .main-nav li {
-        border-bottom: none;
-        width: auto; /* Allow items to size naturally */
-    }
-
-    .main-nav li a {
-        padding: 10px 20px; /* Adjust padding for desktop */
-        font-size: 1em;
-        border-radius: 20px; /* Rounded buttons for nav links */
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .main-nav li a:hover {
-        background-color: #E0FFFF; /* Light pastel blue */
-        color: #4682B4; /* Steely blue */
-    }
-
-    .main-nav .active {
-        background-color: #87CEFA; /* Softer light blue */
-        color: #FFFFFF; /* White text */
-        border-left: none; /* Remove left border highlight */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for active button */
-    }
-
-    /* Hero Section - Desktop */
-    .hero-section {
-        flex-direction: row; /* Side-by-side layout */
-        text-align: left;
-        padding: 80px 40px;
-        gap: 50px;
-    }
-
-    .hero-content {
-        flex: 1; /* Take up available space */
-    }
-
-    .hero-image {
-        flex: 1;
-        display: flex;
-        justify-content: center; /* Center image if smaller */
-        align-items: center;
-    }
-
-    .hero-image img {
-        max-width: 80%; /* Adjust image size */
-    }
-
-    .hero-content h2 {
-        font-size: 2.8em;
-    }
-
-    /* Feature Grid - Desktop */
-    .features-section {
-        padding: 80px 40px;
-    }
-
-    .feature-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-    }
-}
-
-/* Larger desktop screens */
-@media screen and (min-width: 1024px) {
-    header {
-        padding: 20px 80px;
-    }
-
-    .site-title {
-        font-size: 36px;
-    }
-
-    .main-nav ul {
-        gap: 10px; /* Space between nav items */
-    }
-
-    .hero-section {
-        padding: 100px 80px;
-    }
-
-    .hero-content h2 {
-        font-size: 3.5em;
-    }
-
-    .features-section {
-        padding: 100px 80px;
-    }
-
-    .feature-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on large desktops */
-        gap: 40px;
-    }
-}
-
-/* Ensure smooth scrolling on smaller screens if a skip-main link is used */
-@media screen and (prefers-reduced-motion: no-preference) {
+@media screen and (prefers-reduced-motion: reduce) {
     html {
-        scroll-behavior: smooth;
+        scroll-behavior: auto;
+    }
+    .skip-main a, nav li a, .feature-box { /* Disable transitions */
+      transition: none;
+     }
+    /* Your .animation class would go here if needed */
+}
+
+@media screen and (min-width: 765px) {
+    nav ul {
+        /* justify-content: space-around; /* Already centered, can adjust if more items */
+    }
+    nav li a {
+        padding: 0.75em 1.2em;
+        font-size: 1rem;
+    }
+
+    header h1 { /* Main site title */
+       /* font-size: 2.8rem; /* Example adjustment */
+    }
+    .main h2, .container h2 { /* Content headings */
+        text-align: left; /* As per your original */
+        /* font-size: 2rem; */
+    }
+
+    .feature-box {
+        font-size: 1rem;
+        padding: 2rem; /* More padding on larger screens */
+    }
+    .feature-box:hover{ /* Your original hover for these boxes */
+        color: var(--mossie-text-medium); /* Keep text readable */
+        border: 2px solid var(--mossie-text-dark); /* Darker border for clarity */
+        /* background-color: var(--mossie-header-bg);  Light Blue background on hover */
     }
 }
 
-/* Adjustments for the skip-main link on various screens */
-@media screen and (min-width: 765px){ /* This media query was from your original code, adjusted */
-    .skip-main a{
-        top: -40px; /* Hidden off screen */
-        transition: top 0.3s ease-out; /* Smooth transition */
+@media screen and (min-width: 1020px) {
+    /* Optional: Limit overall site width for very large screens */
+    /* body { max-width: 1400px; margin-left: auto; margin-right: auto; } */
+    
+    /* If you want nav content to be 80% of viewport */
+    nav .nav-content-wrapper { /* Add a div inside nav with this class if you want to constrain nav content width */
+        width: 80%;
+        /* max-width: 1200px; /* Also good to have a max pixel width */
+    }
+    /* The fixed nav itself should remain 100% width of viewport */
+
+    header h1 {
+        /* font-size: 3rem; */
+        padding: 3rem 0 1.5rem 0; /* Adjust site title padding */
     }
 
-    .skip-main a:focus{
-        top: 20px; /* Bring into view on focus */
-        left: 20px; /* Slightly adjust left */
-        width: auto; /* Auto width */
-        height: auto; /* Auto height */
-        padding: 8px 15px; /* Adjust padding */
-        text-align: center;
+    .main, .container {
+        padding: 2rem;
+        /* margin-top: 2rem; As per your styles, if you need grid for top-level page sections */
+    }
+    /* If .container is for a 3-column layout of feature boxes: */
+    .container.feature-grid { /* Add .feature-grid to your container div */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem; /* Your grid-gap */
+    }
+    .container.feature-grid > .feature-box { /* Target feature boxes inside this grid */
+         border: 2px solid var(--mossie-header-bg); /* Example border */
+    }
+
+    .main h2, .container h2 { /* Content headings */
+        /* padding: 2rem 3rem; */ /* Adjust padding */
     }
 }

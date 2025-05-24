@@ -7,92 +7,29 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/html5reset.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <title>Mossie</title>
-</head>
+    <title>Mossie - Home</title> </head>
 
 <body>
     <div class="skip-main"><a href="#maincontent">Skip to Main Content</a></div>
 
     <header>
-        <h1 class="site-title">Mossie</h1>
-        <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
-            <span class="hamburger-icon"></span>
-            <span class="hamburger-icon"></span>
-            <span class="hamburger-icon"></span>
-        </button>
-        <nav class="main-nav">
+        <nav>
             <ul>
-                <li><a href="index.html" title="home" class="active">Home</a></li>
-                <li><a href="journal.html" title="journal">Journal</a></li>
-                <li><a href="mood.html" title="mood">Mood Tracker</a></li>
-                <li><a href="pet.html" title="pet">Your Pal</a></li>
+                <li><a href="index.html" title="home">home</a></li>
+                <li><a href="journal.html" title="journal">journal</a></li>
+                <li><a href="mood.html" title="mood">mood</a></li>
+                <li><a href="pet.html" title="pet">pet</a></li>
             </ul>
         </nav>
+        <h1 class="main">Mossie</h1>
     </header>
-
     <main id="maincontent">
-        <section class="hero-section">
-            <div class="hero-content">
-                <h2>Say Hello to Your Cutest Wellness Buddy Ever!</h2>
-                <p>Mossie is here to make building positive mental health habits a joyful adventure, complete with gentle self-reflection, clear mood tracking, and **a precious digital companion who grows right alongside you!**</p>
-                <a href="#features" class="button primary-button">Discover Your New Pal</a>
-            </div>
-            <div class="hero-image">
-                <img src="images/mossie_hero_illustration.png" alt="An illustration of a person gently interacting with their adorable Mossie digital pet, surrounded by calming elements like a journal and mood orb.">
-            </div>
-        </section>
-
-        <section id="features" class="features-section">
-            <h3>Why Mossie is Your Perfect Wellness Partner</h3>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <img src="images/feature_journal_icon.png" alt="A stylized journal icon.">
-                    <h4>Journal Without Jitters</h4>
-                    <p>No more blank page worries! Dive into guided prompts or create your own happy space for self-expression. We make it easy and judgment-free.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="images/feature_mood_icon.png" alt="A colorful, bubbly mood orb icon.">
-                    <h4>Colorful Moods, Clearer You</h4>
-                    <p>A simple tap helps you understand your emotions in a way that just *clicks*. Visualize trends and gain insights without stress.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="images/feature_pet_icon.png" alt="A cute, evolving digital pet icon.">
-                    <h4>Your Little Friend is Waiting</h4>
-                    <p>Watch your tiny digital companion start as an egg and hatch into a unique creature, evolving with your every check-in. They'll even nap with you on rest days!</p>
-                </div>
-                <div class="feature-item">
-                    <img src="images/feature_inclusive_icon.png" alt="An icon representing flexibility and customization.">
-                    <h4>Wellness Made Just for You</h4>
-                    <p>Designed with flexibility in mind, Mossie adapts to your unique rhythms. Custom reminders, no time limits, and sensory preferences are all yours to control.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <h3>Ready for a Happier, Healthier You?</h3>
-            <p>Join the Mossie community and start your journey towards gentle self-awareness and lasting positive habits today.</p>
-            <a href="#top" class="button">Download Mossie Now!</a>
-        </section>
+        <div class="main">
+            <h2> Hey there, ready for a little more calm in your day?</h2>
+            <p>Welcome to Mossie! We're here to help you cultivate positive mental health habits in a gentle, supportive way. Explore your thoughts in the journal, track your mood visually, and watch your unique digital pet grow alongside you.</p>
+            <p>No pressure, just progress. Let's get started!</p>
+        </div>
     </main>
-
-    <script src="js/images.js"></script>
-    <script>
-        // JavaScript for hamburger menu functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburgerButton = document.querySelector('.hamburger-menu');
-            const navMenu = document.querySelector('.main-nav ul');
-
-            hamburgerButton.addEventListener('click', () => {
-                const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
-                hamburgerButton.setAttribute('aria-expanded', !isExpanded);
-                navMenu.classList.toggle('show');
-            });
-        });
-    </script>
-</body>
-<footer>
-    Made by Caleb, Katelyn, Caroline, Sara for EECS 497 SPRING 2025 @ Umich
-</footer>
-
-</html>
+    <script src="js/images.js"></script> <footer> Made by Caleb, Katelyn, Caroline, Sara for EECS 497 SPRING 2025 @ Umich
+    </footer>
+</body> </html>
