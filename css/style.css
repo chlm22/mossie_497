@@ -467,19 +467,75 @@ footer {
 .pet-page-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    padding: 1rem;
-    padding-bottom: 100px; /* Space for the fixed interaction bar at the bottom */
+    /* align-items: center; /* Grid will handle alignment now */
+    padding: 1rem; /* General padding */
+    /* padding-bottom: 100px; /* REMOVE or adjust - no longer needed for fixed bottom bar */
     min-height: calc(100vh - var(--nav-height) - 70px); /* Adjust 70px if footer height changes */
-    position: relative; /* For positioning panels if needed */
-    overflow-x: hidden; /* Prevent horizontal scroll from panels sliding */
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* New Grid Layout for Pet and Side Buttons */
+.pet-layout-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Left buttons, Pet (flexible), Right buttons */
+    align-items: center; /* Vertically align items in each column's center */
+    gap: 1.5rem; /* Space between columns (e.g., buttons and pet area) */
+    width: 100%;
+    max-width: 700px; /* Max width for the whole pet + buttons layout */
+    margin: 0 auto; /* Center the grid on the page */
+}
+
+.pet-options-column {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;   /* Center buttons in their column (optional) */
+    gap: 1.5rem;           /* Space between the two buttons in a column */
+}
+/* .pet-options-left { /* Specific alignment if needed */ 
+/* .pet-options-right { /* Specific alignment if needed */ 
+
+
+/* Styles for the new Circular Interaction Buttons */
+.interaction-button-circle {
+    width: 70px;  /* Width of the circle */
+    height: 70px; /* Height of the circle (same as width) */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: var(--mossie-content-bg); /* White background, or a soft accent */
+    border: 2px solid var(--mossie-accent2-bg); /* Soft Teal border */
+    color: var(--mossie-text-dark);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 1.8rem; /* Size of the emoji icon */
+    font-weight: 600; /* Not really needed for emojis */
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.interaction-button-circle:hover,
+.interaction-button-circle:focus {
+    background-color: var(--mossie-accent2-bg); /* Soft Teal on hover/focus */
+    color: var(--mossie-text-dark);
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    outline: none;
+}
+.interaction-button-circle:focus-visible { /* For keyboard navigation */
+    outline: 3px solid var(--focus-outline-color);
+    outline-offset: 2px;
+}
+
+
+/* Keep these .pet-display-area styles (they are mostly fine) */
 .pet-display-area {
     text-align: center;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    max-width: 400px; /* Max width for the pet display */
+    /* margin-bottom: 1.5rem; /* No longer needed if part of grid gap */
+    width: 100%; /* Will be constrained by grid column */
+    /* max-width: 400px; /* This can still apply if you want to limit pet area within its grid column */
 }
 
 .pet-name {
@@ -490,23 +546,23 @@ footer {
 }
 
 .pet-image-wrapper {
-    width: 100%; /* Or a fixed size like 300px */
-    max-width: 350px;
-    height: auto; /* Or a fixed size like 300px */
+    width: 100%; 
+    max-width: 300px; /* Adjusted max-width for pet image */
+    height: auto; 
     margin: 0 auto 0.75rem;
-    background-color: var(--mossie-accent2-bg); /* Soft Teal as a placeholder background */
-    border-radius: var(--border-radius-cute); /* Rounded background for pet */
+    background-color: var(--mossie-accent2-bg); 
+    border-radius: var(--border-radius-cute); 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem; /* If pet image is smaller than wrapper */
-    min-height: 250px; /* Ensure some height */
+    padding: 1rem; 
+    min-height: 200px; /* Adjusted min-height */
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .pet-image-wrapper img {
     max-width: 100%;
-    max-height: 280px; /* Max height for the pet image */
+    max-height: 230px; /* Adjusted max-height for pet image */
     object-fit: contain;
 }
 
@@ -515,44 +571,6 @@ footer {
     color: var(--mossie-text-medium);
     font-style: italic;
 }
-
-.pet-interaction-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--mossie-header-bg); /* Light Pink, like nav */
-    padding: 0.75rem 0.5rem;
-    display: flex;
-    justify-content: space-around; /* Distribute buttons evenly */
-    align-items: center;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-    z-index: 1000; /* Same as nav, ensure it's above panels when they are not full screen */
-}
-
-.interaction-button {
-    background-color: transparent;
-    border: 2px solid transparent; /* For spacing, becomes visible on focus */
-    color: var(--mossie-text-dark);
-    padding: 0.5em 0.6em; /* Adjust for icon + text or just icon */
-    border-radius: var(--border-radius-soft);
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.85rem; /* Smaller for more buttons */
-    text-align: center;
-    min-width: 70px; /* Ensure buttons have some width */
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.interaction-button:hover,
-.interaction-button:focus {
-    background-color: var(--mossie-accent1-bg); /* Saturated Pink */
-    color: var(--mossie-accent1-text);
-    outline: none;
-}
-.interaction-button:focus-visible {
-    border-color: var(--focus-outline-color);
-}
-
 /* === Customization Panel Styles === */
 .customization-panel {
     position: fixed;
