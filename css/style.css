@@ -240,19 +240,22 @@ footer {
 /* === Corner Emotional Pet Accent (Circular) === */
 .emotional-pet-corner-accent {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 90px;
-    height: 90px;
+    bottom: 15px;     /* Slightly adjust bottom spacing if needed with larger size */
+    right: 15px;      /* Slightly adjust right spacing */
+    width: 110px;     /* Increased size of the circle */
+    height: 110px;    /* Increased size */
     z-index: 999;
-    background-color: #FFFFFF; /* White background for the circle */
-    border-radius: 50%;      /* Makes the container a circle */
-    padding: 10px;           /* Space between pet image and edge of the circle */
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15); /* Softer shadow for the circle */
-    display: flex;           /* Used to help center the image inside */
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    padding: 12px;    /* Adjust padding proportionally */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18); /* Slightly stronger shadow */
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+    /* Option 1: Add a subtle outline - uncomment the line below if you want to use it */
+    /* border: 2px solid rgba(0, 0, 0, 0.05); */
 }
 
 .emotional-pet-corner-accent img {
