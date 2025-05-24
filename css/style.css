@@ -1,550 +1,431 @@
-
-.skip-main a{
+/* --- Global Styles --- */
+.skip-main a {
     position: absolute;
     top: -40px;
-    color: #D1E8FC;
+    color: #87CEFA; /* Softer light blue */
     z-index: 10;
+    transition: top 0.3s ease; /* Smooth transition */
 }
 
-.skip-main a:focus{
-    color: #D1E8FC;
-    background-color: #000000;
+.skip-main a:focus {
+    color: #FFFFFF; /* White for contrast */
+    background-color: #5F9EA0; /* Softer dark blue-green */
     top: 20px;
     position: absolute;
     z-index: 10;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 5px;
 }
 
-html{
-    background-image: linear-gradient(120deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
-padding: 0;
-top: 0;
-bottom: 0;
-
+html {
+    /* Softer, pastel gradient inspired by original but lighter */
+    background-image: linear-gradient(120deg, #CCEEFF, #FFDDED, #FFDDE2, #E0FFFF, #E6D8FF);
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh; /* Ensure html covers full viewport height */
 }
 
-body{
-    color:#000000;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+body {
+    color: #333333; /* Softer black/dark grey */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif; /* A more modern, friendly font */
     margin: 0 auto;
-
+    line-height: 1.6;
 }
 
-nav ul{
-    background-image: linear-gradient(20deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
-    list-style-type: none;
+/* --- Header & Navigation --- */
+header {
+    background-image: linear-gradient(20deg, #CCEEFF, #FFDDED, #FFDDE2, #E0FFFF, #E6D8FF);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     top: 0;
-    color: #000000;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    z-index: 1000; /* Ensure it stays on top */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.site-title {
+    font-size: 28px; /* Slightly larger for main title */
+    margin: 0;
+    color: #4682B4; /* Steely blue, contrasts well */
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Hamburger Menu Icon */
+.hamburger-menu {
+    display: flex; /* Initially show for mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Above nav links */
+}
+
+.hamburger-icon {
+    width: 100%;
+    height: 3px;
+    background-color: #4682B4; /* Steely blue */
+    border-radius: 2px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-icon:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-icon:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-icon:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+
+/* Main Navigation */
+.main-nav ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 100%;
-    overflow:visible;
-    font-size: small;
-    display: flex;
-    justify-content: center;
-}
-
-nav li{
-    display: inline;
-    float:right;
-}
-
-nav li a{
-    display: block;
-    color:#000000;
-    text-align: center;
-    padding: 12px;
-    border:  1px;
-    text-decoration: none;
-    font-size: small;
-    font-weight: 600;
-}
-
-nav li a:hover{
-    color:#808080;
-    text-decoration: dotted;
-    border: #000000 solid 2px;
-    
-}
-
-.active {
-    background-color: #D1E8FC;
-    color: #000000;
-    padding: 1 rem;
-    top: 0;
-    border: 1px;
-}
-
-header h1{
-    font-size: 30px;
-    margin:0;
-    padding: 5rem 0.25rem 2rem 0.25rem;
-    text-align: center;
-    letter-spacing: 3px;
-}
-
-/* #map { height: 180px; } */
-
-main div.main h2{
-    font-size: 20px;
-    margin: 0;
-    padding: 10px 8px 17px 8px;
-    text-align: center;
-    font-weight: 500;
-    letter-spacing: 3px;
-}
-
-div.container{
-    display:grid;
-    grid-template-columns: 1fr;
-    margin: 25px auto;
-    color: #000000;
-    overflow: hidden;
-}
-
-#other-page-travel{
-    font-size: small;
-    font-weight: 600;
-    background-image: linear-gradient(40deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
-    padding: 25px;
-    text-align: center;
-}
-
-#other-page-travel:hover{
-    color:#ffffff;
-}
-
-#other-page-pets{
-    font-size: small;
-    font-weight: 600;
-    background-image: linear-gradient(40deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
-    padding: 25px;
-    text-align: center;
-}
-#other-page-pets:hover{
-    color:#ffffff;
-}
-
-#other-page-cooking{
-    font-size: small;
-    font-weight: 600;
-    background-image: linear-gradient(140deg, #BDE0FE, #FFC8DD, #FFAFCC, #D8F7F2, #CDB4DB);
-    padding: 25px;
-    text-align: center;
-}
-
-#other-page-cooking:hover{
-    color:#ffffff;
-}
-
-footer{
-    text-align: right;
-    margin: 0px 3px 10px 0px;
-    color:#808080;
-    align-content:right;
-    font-size: x-small;
-}
-
-.animal-container{
-    letter-spacing: 2px;
-    padding: 0px 10px 5px 10px;
-    color: #000000;
-    font-size:12px;
-}
-
-img{
-    width: 150px;
-    height: 160px;
-    border-radius: 20px;
-    white-space: nowrap;
-}
-
-ul{
-    line-height: 20px;
-    letter-spacing: 2px;
-}
-
-.animal-container h2{
-    font-weight: 900;
-    text-decoration:underline;
-    text-align: center;
-    margin-top: 0px;
-}
-
-div#cat-container{
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-}
-#cat1{
-    grid-row-start: 1;
-    margin: 50px;
-}
-
-#cat2{
-    grid-row-start: 2;
-}
-
-#cat3{
-    grid-row-start: 4;
-    margin-bottom: 40px;
-}
-#cat4{
-    grid-column-start: 1;
-    grid-row-start: 3;
-    margin: 50px;
-}
-
-#rabbit-container{
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-}
-
-#r1{
-    grid-row-start: 1;
-    margin: 30px;
-}
-
-#r2{
-    grid-row-start: 2;
-}
-
-#r3{
-    grid-row-start: 4;
-    margin-bottom: 40px;
-}
-#r4{
-    grid-column-start: 1;
-    grid-row-start: 3;
-    margin: 50px;
-}
-
-#guineapig-container{
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-}
-#gp1{
-    grid-row-start: 1;
-    margin: 30px;
-}
-
-#gp2{
-    grid-row-start: 2;
-}
-
-#gp3{
-    grid-row-start: 4;
-}
-    
-#gp4{
-    grid-column-start: 1;
-    grid-row-start: 3;
-    margin: 50px;
-}
-
-    .animal-container, .recipe-container, .travel-container{
-        margin: 20px;
-
-    }
-
-@media screen and (prefers-reduced-motion: reduce) {
-    .animation {
-      animation: dissolve 4s linear infinite both;
-      text-decoration: overline;
-      background-color:#D1E8FC;
-    }
-    html{
-        scroll-behavior: auto; /* Removes scroll animation */
-    }
-  
-    .skip a{
-      -webkit-transition: none; /* sets to default setting */
-      transition: none;        /* sets to default setting */
-     }
-  }
-
-  @media screen and (min-width: 765px){
-
-    .skip-main a{
-        position: absolute;
-        top: -40px;
-        color: #D1E8FC;
-        z-index: -10;
-        transition:cubic-bezier(1, 0, 0, 1);
-        -webkit-transition: top 1s ease-out;
-        /* I dont know how to get rid of the squigglyline */
-        /* but the code seems to work... so idk what that means */
-    }
-    
-    .skip-main a:focus{
-        color: #D1E8FC;
-        background-color: #000000;
-        height: 70px;
-        width: 100px;   
-        text-align:center;
-        left: 15px;
-        top: 65px;  
-        position: absolute;
-        z-index: 10;
-        font-weight: 700;
-    }
-
-    nav ul{
-        font-size: small;
-        display: flex;
-        justify-content: space-around;
-    }
-
-    nav li a{
-        padding: 18px 50px;
-        font-size: medium;
-        font-weight: 600;
-    }
-
-    .active {
-        border: 3px black solid;
-    }
-
-    header h1{
-        font-size: 40px;
-        letter-spacing: 2px;
-    }
-    main div.main h2{
-        font-size: 20px;
-        padding: 12px 50px;
-        text-align:left;
-        font-weight: 500;
-        letter-spacing: 2px;
-    }
-    
-    div.container{
-        margin: 40px auto 15px auto;
-    }
-    
-    div#other-page-travel{
-        font-size: large;
-        font-weight: 900;
-        padding: 100px;
-    }
-    
-    div#other-page-travel:hover{
-        color: #808080;
-        border: 3px black solid;
-        background-color: #D1E8FC;
-    }
-    
-    #other-page-pets{
-        font-size: large;
-        font-weight: 900;
-        padding: 100px;
-    }
-    div#other-page-pets:hover{
-        color:#808080;
-        border: 3px black solid;
-    }
-    
-    #other-page-cooking{
-        font-size: large;
-        font-weight: 900;
-        padding: 100px;
-    }
-    
-    div#other-page-cooking:hover{
-     color:#808080;
-        border: 3px black solid;
-    }
-
-    
-    footer{
-        margin: 0px 8px 8px 0px;
-    }
-    
-    .animal-container, .recipe-container, .travel-container{
-        letter-spacing: 2px;
-        padding: 5px 10px 50px 10px;
-        color: #000000;
-    }
-    
-    .image-recipe, .image-travel{
-        height: 400px;
-        width: 360px;
-    }
-
-    .recipe-title, .travel-title{
-        font-weight: 900;
-        font-size: xx-large;
-        text-align: center;
-        text-decoration: underline;
-    }
-
-    .recipe-div, .travel-div{
-        padding: 20px;
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-
-    .recipe, .location-characteristics{
-        font-size: medium;
-    }
-    
-    ul{
-        line-height: 20px;
-        letter-spacing: 2px;
-    }
-    
-    div.animal-container h2{
-        font-weight: 900;
-        text-decoration:underline;
-        font-size: 40px;
-        text-align: center;
-        padding: 20px;
-    }
-    
-    #cat-container, #rabbit-container, #guineapig-container{
-        display: grid;
-        place-items: center;
-    }
-    
-    .cat3title, .rabbit3title, .gp3title{
-        font-weight: 700;
-        font-size: larger;
-        list-style-type: none;
-    }
-    h1#peth1{
-        padding-top: 8rem;
-    }
-    div.animal-container h2{
-        padding:0px;
-        margin-top: 0px;
-        margin-bottom: 40px;
-    }
-
-    div#cat-container{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 15px;
-        height: 30rem;
-        padding-bottom: 40px;
-    }
-
-    #cat2{
-        grid-row-start: 2;
-        grid-column-start: 1;
-    }
-
-    #cat4{
-        grid-row-start: 1;
-        grid-column-start: 2;
-    }
-
-    #cat3{
-        grid-row-start: 2;
-        grid-column-start: 2;
-    }
-
-    div#rabbit-container{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 15px;
-        height: 30rem;
-        padding-bottom: 40px;
-    }
-
-    #r2{
-        grid-row-start: 2;
-        grid-column-start: 1;
-    }
-
-    #r4{
-        grid-row-start: 1;
-        grid-column-start: 2;
-    }
-
-    #r3{
-        grid-row-start: 2;
-        grid-column-start: 2;
-    }
-
-    div#guineapig-container{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 15px;
-        height: 30rem;
-        padding-bottom: 40px;
-    }
-
-    #gp2{
-        grid-row-start: 2;
-        grid-column-start: 1;
-    }
-
-    #gp4{
-        grid-row-start: 1;
-        grid-column-start: 2;
-    }
-
-    #gp3{
-        grid-row-start: 2;
-        grid-column-start: 2;
-    }
-
-  }
-
-
-  @media screen and (min-width: 1020px){
-    header h1 {
-        font-size: 40px;
-        letter-spacing: 2px;
-        padding: 10rem 0.25rem 2rem 0.25rem;
-    }
-    nav, body, nav ul{
-        width: 80%;
-    }
-
-    main{
-        padding-bottom: 5rem;
-    }
-
-
-    div.container{
-        grid-template-columns: 1fr 1fr 1fr;
-        margin-top: 5rem;
-        grid-gap: 2rem;
-    }
-    div.container > div{
-
-        border: white solid 2px;
-    }
-
-
-    main div.main h2 {
-        font-size: 20px;
-        padding: 30px 90px 50px 90px;
-        text-align: left;
-        font-weight: 500;
-        letter-spacing: 2px;
-    }
-
-div.animal-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    overflow:scroll;
-    overflow-x:scroll;
-}
-
-div.animal-container h2 {
-    text-decoration: none;
-}
-
-
-    footer{
-    position:static;
+    display: none; /* Hidden by default on small screens */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Below header */
     left: 0;
-    bottom: 0;
     width: 100%;
+    background-image: linear-gradient(20deg, #CCEEFF, #FFDDED, #FFDDE2, #E0FFFF, #E6D8FF); /* Match header background */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.main-nav ul.show {
+    display: flex; /* Show when 'show' class is added by JS */
+}
+
+.main-nav li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle separator */
+}
+
+.main-nav li:last-child {
+    border-bottom: none;
+}
+
+.main-nav li a {
+    display: block;
+    color: #4682B4; /* Steely blue */
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav li a:hover {
+    background-color: #E0FFFF; /* Lighter background on hover */
+    color: #333333;
+}
+
+.main-nav .active {
+    background-color: #E0FFFF; /* Active item background */
+    color: #333333;
+    border-left: 5px solid #87CEFA; /* Highlight active item */
+}
+
+
+/* --- Main Content Section --- */
+main {
+    padding-top: 80px; /* Space for fixed header */
+    padding-bottom: 5rem;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    background-color: #FFFACD; /* Light pastel yellow for a soft feel */
+}
+
+.hero-content h2 {
+    font-size: 2.2em;
+    color: #4682B4;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    color: #555555;
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Slightly rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature Section */
+.features-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #F8F8FF; /* Off-white for a clean look */
+}
+
+.features-section h3 {
+    font-size: 1.8em;
+    color: #4682B4;
+    margin-bottom: 40px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+.feature-item img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    border-radius: 0; /* Icons typically don't need border-radius */
+}
+
+.feature-item h4 {
+    font-size: 1.3em;
+    color: #5F9EA0; /* Softer dark blue-green */
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1em;
+    color: #666666;
+}
+
+/* Call to Action Section */
+.cta-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #E0FFFF; /* Light pastel blue for a calming CTA */
+}
+
+.cta-section h3 {
+    font-size: 2em;
+    color: #4682B4;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.1em;
+    color: #555555;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    background-color: #87CEFA; /* Softer light blue */
+    color: white;
+    padding: 15px 35px;
+    border-radius: 30px; /* More rounded for a friendlier feel */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Remove default button border */
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #5F9EA0; /* Deeper blue-green on hover */
+    transform: translateY(-2px);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center; /* Center align for a cleaner look */
+    margin-top: 40px; /* Space from main content */
+    padding: 20px;
+    color: #777777; /* Softer grey */
+    font-size: 0.85em;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablet and larger screens (desktop navigation) */
+@media screen and (min-width: 768px) {
+    header {
+        padding: 20px 40px;
     }
-  }
+
+    .site-title {
+        font-size: 32px;
+    }
+
+    .hamburger-menu {
+        display: none; /* Hide hamburger on larger screens */
+    }
+
+    .main-nav ul {
+        display: flex; /* Show nav items as row */
+        flex-direction: row;
+        position: static; /* Remove fixed positioning */
+        width: auto;
+        box-shadow: none;
+        border-top: none;
+        background-image: none; /* No background gradient for desktop nav */
+        margin-left: auto; /* Push nav to right */
+    }
+
+    .main-nav li {
+        border-bottom: none;
+        width: auto; /* Allow items to size naturally */
+    }
+
+    .main-nav li a {
+        padding: 10px 20px; /* Adjust padding for desktop */
+        font-size: 1em;
+        border-radius: 20px; /* Rounded buttons for nav links */
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .main-nav li a:hover {
+        background-color: #E0FFFF; /* Light pastel blue */
+        color: #4682B4; /* Steely blue */
+    }
+
+    .main-nav .active {
+        background-color: #87CEFA; /* Softer light blue */
+        color: #FFFFFF; /* White text */
+        border-left: none; /* Remove left border highlight */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for active button */
+    }
+
+    /* Hero Section - Desktop */
+    .hero-section {
+        flex-direction: row; /* Side-by-side layout */
+        text-align: left;
+        padding: 80px 40px;
+        gap: 50px;
+    }
+
+    .hero-content {
+        flex: 1; /* Take up available space */
+    }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: center; /* Center image if smaller */
+        align-items: center;
+    }
+
+    .hero-image img {
+        max-width: 80%; /* Adjust image size */
+    }
+
+    .hero-content h2 {
+        font-size: 2.8em;
+    }
+
+    /* Feature Grid - Desktop */
+    .features-section {
+        padding: 80px 40px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+/* Larger desktop screens */
+@media screen and (min-width: 1024px) {
+    header {
+        padding: 20px 80px;
+    }
+
+    .site-title {
+        font-size: 36px;
+    }
+
+    .main-nav ul {
+        gap: 10px; /* Space between nav items */
+    }
+
+    .hero-section {
+        padding: 100px 80px;
+    }
+
+    .hero-content h2 {
+        font-size: 3.5em;
+    }
+
+    .features-section {
+        padding: 100px 80px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on large desktops */
+        gap: 40px;
+    }
+}
+
+/* Ensure smooth scrolling on smaller screens if a skip-main link is used */
+@media screen and (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Adjustments for the skip-main link on various screens */
+@media screen and (min-width: 765px){ /* This media query was from your original code, adjusted */
+    .skip-main a{
+        top: -40px; /* Hidden off screen */
+        transition: top 0.3s ease-out; /* Smooth transition */
+    }
+
+    .skip-main a:focus{
+        top: 20px; /* Bring into view on focus */
+        left: 20px; /* Slightly adjust left */
+        width: auto; /* Auto width */
+        height: auto; /* Auto height */
+        padding: 8px 15px; /* Adjust padding */
+        text-align: center;
+    }
+}
