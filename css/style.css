@@ -76,39 +76,44 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: var(--nav-height);
+    width: 220px; /* DEFINED WIDTH for the sidebar */
+    height: 100vh; /* FULL HEIGHT of the viewport */
     z-index: 1000;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* STACK items vertically */
+    justify-content: flex-start; /* ALIGN to the top */
     align-items: center;
-    padding: 0 1rem;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.05); /* Softer shadow */
+    padding: 2rem 0.5rem; /* More top padding, less horizontal */
+    box-shadow: 3px 0 8px rgba(0,0,0,0.05); /* Shadow on the right side now */
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
+    flex-direction: column; /* STACK the list items vertically */
     justify-content: center;
     align-items: center;
+    width: 100%; /* Ensure ul takes full width of nav */
 }
 
 nav li {
-    margin: 0 0.3rem; /* Slightly less margin for pill shape if active */
+    margin: 0.5rem 0; /* Vertical margin for spacing */
+    width: 100%; /* Make list items take full width */
 }
 
 nav li a {
     display: block;
-    color: var(--mossie-text-dark); 
+    color: var(--mossie-text-dark);
     text-align: center;
-    padding: 0.6em 1.2em; /* Adjusted padding for a rounder feel */
+    padding: 0.8em 1em; /* Adjusted padding for better vertical feel */
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem; /* Slightly larger font for sidebar */
     font-weight: 600;
-    border-radius: var(--border-radius-pill); /* Pill shape for all */
+    border-radius: var(--border-radius-pill);
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    width: 95%; /* Make link take up most of the list item width */
+    margin: 0 auto; /* Center the link */
 }
-
 nav li a:hover {
     background-color: var(--mossie-accent2-bg); /* Soft Teal */
     color: var(--mossie-text-dark);
@@ -129,10 +134,24 @@ nav li a.active {
     box-shadow: 0 2px 4px rgba(0,0,0,0.08);   /* Adds a subtle shadow */
 }
 
+body {
+    font-family: var(--font-primary);
+    color: var(--mossie-text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* MODIFIED: Changed top padding to left padding for the new sidebar */
+    padding-left: 220px; /* This value should match your nav width */
+}
+
+
 /* === Header (Site Title Area) === */
 header {
-    padding: 2.5rem 1rem 2rem; /* More space */
+    /* MODIFIED: Removed padding that was for the top bar */
+    padding: 2rem 1rem 1rem; /* Adjust as needed */
     text-align: center;
+    /* The header itself no longer needs special positioning */
 }
 
 header h1 {
@@ -152,7 +171,8 @@ h1#peth1 { /* If you still use this ID for the pet page title */
 main {
     flex-grow: 1;
     width: 100%;
-    padding: 1.5rem 0; 
+    /* MODIFIED: No longer needs a margin-left, as body padding handles it */
+    padding: 1.5rem; /* Added general padding for consistency */
 }
 
 .main, .container {
