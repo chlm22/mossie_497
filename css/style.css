@@ -1,25 +1,20 @@
 /* === CSS Custom Properties (Mossie "Cuter" Color Scheme) === */
 :root {
-    --mossie-bg: #FFF7FA;            /* New - Very Light Pinkish Cream - Main page background */
-    --mossie-header-bg: #FFDDED;     /* User's Light Pink 1 - Header/Nav background */
-    --mossie-footer-bg: #E6D8FF;     /* User's Light Lavender - Footer background */
-    
-    --mossie-accent1-bg: #FFC1D9;    /* New - Slightly Saturated Pink for active/important accents */
-    --mossie-accent1-text: #9D2D5E;  /* New - Darker pink text for on accent1-bg (good contrast) */
-    
-    --mossie-accent2-bg: #D4F0F0;    /* New - Soft Teal for hover, secondary accents */
+    --mossie-bg: #FFF7FA;            /* Very Light Pinkish Cream - Main page background */
+    --mossie-header-bg: #FFDDED;     /* Light Pink 1 - Header/Nav background */
+    --mossie-footer-bg: #E6D8FF;     /* Light Lavender - Footer background */
+    --mossie-accent1-bg: #FFC1D9;    /* Saturated Pink for active/important accents */
+    --mossie-accent1-text: #9D2D5E;  /* Darker pink text for on accent1-bg */
+    --mossie-accent2-bg: #D4F0F0;    /* Soft Teal for hover, secondary accents */
     --mossie-content-bg: #FFFFFF;    /* White - For content boxes to pop */
-
-    --mossie-text-dark: #4A4A4A;      /* New - Softer Dark Grey - Primary text */
-    --mossie-text-medium: #6B7280;    /* New - Softer Medium Grey - Secondary text, headings */
-
-    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif; /* Emphasizing Nunito */
-    --nav-height: 60px;
-    --focus-outline-color: #5E94D4;   /* New - Friendly Blue for focus */
-
+    --mossie-text-dark: #4A4A4A;      /* Softer Dark Grey - Primary text */
+    --mossie-text-medium: #6B7280;    /* Softer Medium Grey - Secondary text, headings */
+    --font-primary: 'Nunito Sans', Verdana, Arial, Helvetica, sans-serif;
+    --nav-width: 220px; /* NEW: Define nav width as a variable */
+    --focus-outline-color: #5E94D4;   /* Friendly Blue for focus */
     --border-radius-soft: 8px;
-    --border-radius-cute: 12px;      /* More rounded */
-    --border-radius-pill: 50px;      /* For pill-shaped elements */
+    --border-radius-cute: 12px;
+    --border-radius-pill: 50px;
 }
 
 /* === Global Resets & Base Styles === */
@@ -37,6 +32,7 @@ html {
     background-color: var(--mossie-bg);
 }
 
+/* MODIFIED: Changed padding for new sidebar */
 body {
     font-family: var(--font-primary);
     color: var(--mossie-text-dark);
@@ -44,7 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: var(--nav-height);
+    padding-left: var(--nav-width); /* Push content over for the side nav */
 }
 
 /* === Skip to Main Content === */
@@ -52,86 +48,127 @@ body {
     position: absolute;
     left: -9999px;
     top: 10px;
-    background-color: var(--mossie-accent1-bg); /* Using the more saturated pink */
-    color: var(--mossie-accent1-text);    /* Text for on that pink */
+    background-color: var(--mossie-accent1-bg);
+    color: var(--mossie-accent1-text);
     padding: 0.75em 1em;
     z-index: 1100;
-    border-radius: 0 0 var(--border-radius-soft) var(--border-radius-soft);
+    border-radius: 0 0 var(--border-radius-soft) 0;
     text-decoration: none;
     font-weight: 600;
     transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
 .skip-main a:focus {
-    left: 10px;
+    left: var(--nav-width); /* Align with main content */
     top: 10px;
     outline: 3px solid var(--focus-outline-color);
     outline-offset: 2px;
 }
 
 
-/* === Navigation === */
+/* === Navigation (MODIFIED FOR SIDEBAR) === */
 nav {
-    background-color: var(--mossie-header-bg); /* Light Pink */
+    background-color: var(--mossie-header-bg);
     position: fixed;
     top: 0;
     left: 0;
-    width: 220px; /* DEFINED WIDTH for the sidebar */
-    height: 100vh; /* FULL HEIGHT of the viewport */
+    width: var(--nav-width); /* Use the variable for width */
+    height: 100vh;           /* Full viewport height */
     z-index: 1000;
     display: flex;
-    flex-direction: column; /* STACK items vertically */
-    justify-content: flex-start; /* ALIGN to the top */
+    flex-direction: column;  /* Stack groups vertically */
+    justify-content: flex-start;
     align-items: center;
-    padding: 2rem 0.5rem; /* More top padding, less horizontal */
-    box-shadow: 3px 0 8px rgba(0,0,0,0.05); /* Shadow on the right side now */
+    padding: 1.5rem 0.5rem;  /* Vertical padding */
+    box-shadow: 3px 0 8px rgba(0,0,0,0.05); /* Shadow on the right */
+}
+
+/* NEW: Group for top utility icons */
+.nav-group-top {
+    width: 100%;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(157, 45, 94, 0.1); /* Faint separator line using accent color */
+}
+
+/* NEW: Group for main navigation */
+.nav-group-main {
+    width: 100%;
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
-    flex-direction: column; /* STACK the list items vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensure ul takes full width of nav */
+    width: 100%;
 }
 
 nav li {
-    margin: 0.5rem 0; /* Vertical margin for spacing */
-    width: 100%; /* Make list items take full width */
+    margin: 0.5rem 0;
+    width: 100%;
 }
 
+/* MODIFIED: Base style for all nav links */
 nav li a {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: var(--mossie-text-dark);
     text-align: center;
-    padding: 0.8em 1em; /* Adjusted padding for better vertical feel */
+    padding: 0.6em 1em;
     text-decoration: none;
-    font-size: 1rem; /* Slightly larger font for sidebar */
+    font-size: 0.9rem; /* This is the label text size */
     font-weight: 600;
-    border-radius: var(--border-radius-pill);
+    border-radius: var(--border-radius-cute); /* Use cute radius for a soft rectangle */
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    width: 95%; /* Make link take up most of the list item width */
-    margin: 0 auto; /* Center the link */
-}
-nav li a:hover {
-    background-color: var(--mossie-accent2-bg); /* Soft Teal */
-    color: var(--mossie-text-dark);
-    transform: translateY(-1px); /* Slight lift on hover */
+    width: 90%;
+    margin: 0 auto;
 }
 
-nav li a:focus {
+/* NEW: Style for the icons themselves */
+nav li a .material-symbols-outlined {
+    font-size: 2rem;
+    margin-bottom: 4px; /* Space between icon and text */
+    transition: transform 0.2s ease;
+}
+
+/* NEW: Style for the icon-only buttons */
+nav li a.icon-only {
+    padding: 0.75em;
+    border-radius: var(--border-radius-cute);
+}
+
+nav li a.icon-only .material-symbols-outlined {
+    font-size: 2.25rem; /* Make icon larger */
+    margin-bottom: 0;   /* No text, so no margin needed */
+}
+
+/* MODIFIED: Hover and focus states */
+nav li a:hover,
+nav li a:focus-visible {
+    background-color: var(--mossie-accent2-bg);
+    color: var(--mossie-text-dark);
+    transform: scale(1.03); /* Slight scale up on hover */
+}
+
+nav li a:focus-visible {
     outline: 2px solid var(--focus-outline-color);
-    outline-offset: 3px; /* Ensure outline is clear of the pill */
-    background-color: var(--mossie-accent2-bg); 
-    color: var(--mossie-text-dark);
+    outline-offset: 3px;
 }
 
+/* MODIFIED: Active state has a more prominent background */
 nav li a.active {
-    background-color: var(--mossie-accent1-bg); /* Applies the pink background */
-    color: var(--mossie-accent1-text);          /* Applies the darker pink text */
-    font-weight: 700;                           /* Makes the text bolder */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);   /* Adds a subtle shadow */
+    background-color: var(--mossie-accent1-bg);
+    color: var(--mossie-accent1-text);
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+nav li a.active .material-symbols-outlined {
+    transform: scale(1.1); /* Make the active icon slightly bigger */
 }
 
 body {
@@ -148,18 +185,18 @@ body {
 
 /* === Header (Site Title Area) === */
 header {
-    /* MODIFIED: Removed padding that was for the top bar */
-    padding: 2rem 1rem 1rem; /* Adjust as needed */
+    /* Header no longer needs complex positioning */
+    padding: 2.5rem 1rem 2rem;
     text-align: center;
-    /* The header itself no longer needs special positioning */
+    width: 100%;
 }
 
 header h1 {
-    font-size: clamp(2rem, 6vw, 2.8rem); /* Slightly larger and more impactful */
-    color: var(--mossie-text-dark); 
-    letter-spacing: 1px; /* Less spacing for a softer look with Nunito */
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    color: var(--mossie-text-dark);
+    letter-spacing: 1px;
     margin: 0;
-    font-weight: 700; /* Nunito bold is friendly */
+    font-weight: 700;
 }
 h1#peth1 { /* If you still use this ID for the pet page title */
     padding-top: 1rem; 
@@ -171,17 +208,16 @@ h1#peth1 { /* If you still use this ID for the pet page title */
 main {
     flex-grow: 1;
     width: 100%;
-    /* MODIFIED: No longer needs a margin-left, as body padding handles it */
-    padding: 1.5rem; /* Added general padding for consistency */
+    padding: 1.5rem 0;
 }
 
 .main, .container {
-    max-width: 900px; /* Slightly narrower for a cozier feel */
+    max-width: 900px;
     margin: 1.5rem auto;
-    padding: 2rem; /* More internal padding */
-    background-color: var(--mossie-content-bg); 
-    border-radius: var(--border-radius-cute); /* Cuter rounding */
-    box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07); /* Softer, more diffuse shadow */
+    padding: 2rem;
+    background-color: var(--mossie-content-bg);
+    border-radius: var(--border-radius-cute);
+    box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07);
 }
 
 .main h2, .container h2 {
@@ -233,14 +269,17 @@ main {
 
 /* === Footer === */
 footer {
-    background-color: var(--mossie-footer-bg); /* Light Lavender */
-    color: var(--mossie-text-dark); 
+    background-color: var(--mossie-footer-bg);
+    color: var(--mossie-text-dark);
     text-align: center;
-    padding: 2rem 1rem; /* More padding */
-    font-size: 0.9rem; /* Slightly larger footer text */
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
     margin-top: auto;
-    border-top: 4px solid var(--mossie-accent2-bg); /* Teal accent top border */
+    border-top: 4px solid var(--mossie-accent2-bg);
+    /* Footer position is now relative to the body, which has padding */
+    width: 100%;
 }
+
 
 /* === Utility Classes === */
 .text-center { text-align: center; }
