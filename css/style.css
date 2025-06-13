@@ -105,109 +105,109 @@ body {
   margin: auto;
 }
 
- /* === Navigation Sidebar === */
-        nav {
-            background-color: var(--mossie-header-bg);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: var(--nav-width);
-            height: 100vh;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 1.5rem 0.5rem;
-            box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
-            transition: width 0.3s ease; /* Smooth transition for width change */
-        }
+/* === Navigation Sidebar === */
+nav {
+  background-color: var(--mossie-header-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav-width);
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  transition: width 0.3s ease; /* Smooth transition for width change */
+}
 
-        .nav-group-top {
-            width: 100%;
-            padding-bottom: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(157, 45, 94, 0.1);
-        }
+.nav-group-top {
+  width: 100%;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(157, 45, 94, 0.1);
+}
 
-        .nav-group-main {
-            width: 100%;
-            flex-grow: 1;
-        }
+.nav-group-main {
+  width: 100%;
+  flex-grow: 1;
+}
 
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-        nav li {
-            margin: 0.5rem 0;
-            width: 100%;
-        }
+nav li {
+  margin: 0.5rem 0;
+  width: 100%;
+}
 
-        nav li a {
-            display: flex;
-            flex-direction: row; /* Changed to row for desktop view */
-            align-items: center;
-            justify-content: flex-start; /* Align items to the start */
-            color: var(--mossie-text-dark);
-            padding: 0.8em 1.5em; /* Adjusted padding */
-            text-decoration: none;
-            font-size: 1rem; /* Larger font for desktop */
-            font-weight: 600;
-            border-radius: var(--border-radius-cute);
-            transition: background-color 0.2s ease, color 0.2s ease;
-            width: 90%;
-            margin: 0 auto;
-            overflow: hidden; /* Hide text when nav is collapsed */
-            white-space: nowrap; /* Prevent text wrapping */
-        }
+nav li a {
+  display: flex;
+  flex-direction: row; /* Changed to row for desktop view */
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start */
+  color: var(--mossie-text-dark);
+  padding: 0.8em 1.5em; /* Adjusted padding */
+  text-decoration: none;
+  font-size: 1rem; /* Larger font for desktop */
+  font-weight: 600;
+  border-radius: var(--border-radius-cute);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden; /* Hide text when nav is collapsed */
+  white-space: nowrap; /* Prevent text wrapping */
+}
 
-        nav li a img {
-            width: 32px;
-            height: 32px;
-            margin-right: 1rem; /* Space between icon and text */
-            flex-shrink: 0; /* Prevent icon from shrinking */
-            transition: transform 0.2s ease;
-        }
+nav li a img {
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem; /* Space between icon and text */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  transition: transform 0.2s ease;
+}
 
-        nav li a .nav-text {
-            transition: opacity 0.2s ease;
-        }
+nav li a .nav-text {
+  transition: opacity 0.2s ease;
+}
 
-        nav li a.icon-only {
-            justify-content: center; /* Center icon when it's alone */
-            padding: 0.75em;
-        }
+nav li a.icon-only {
+  justify-content: center; /* Center icon when it's alone */
+  padding: 0.75em;
+}
 
-        nav li a.icon-only img {
-            margin-right: 0;
-        }
-        
-        nav li a:hover,
-        nav li a:focus-visible {
-            background-color: var(--mossie-accent2-bg);
-            color: var(--mossie-text-dark);
-        }
+nav li a.icon-only img {
+  margin-right: 0;
+}
 
-        nav li a:focus-visible {
-            outline: 2px solid var(--focus-outline-color);
-            outline-offset: 2px;
-        }
+nav li a:hover,
+nav li a:focus-visible {
+  background-color: var(--mossie-accent2-bg);
+  color: var(--mossie-text-dark);
+}
 
-        nav li a.active {
-            background-color: var(--mossie-accent1-bg);
-            color: var(--mossie-accent1-text);
-            font-weight: 700;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-        }
+nav li a:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
 
-        nav li a.active img {
-            transform: scale(1.1);
-        }
+nav li a.active {
+  background-color: var(--mossie-accent1-bg);
+  color: var(--mossie-accent1-text);
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+nav li a.active img {
+  transform: scale(1.1);
+}
 
 /* --- Main Content Area --- */
 main {
@@ -328,14 +328,14 @@ main {
   border-radius: var(--border-radius-cute);
   box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07);
 }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: var(--mossie-content-bg);
-            border-radius: var(--border-radius-cute);
-            box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07);
-        }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--mossie-content-bg);
+  border-radius: var(--border-radius-cute);
+  box-shadow: 0 5px 20px rgba(100, 100, 100, 0.07);
+}
 
 .main h2,
 .container h2 {
@@ -355,7 +355,6 @@ main {
   margin-bottom: 1rem;
   font-weight: 600;
 }
-
 
 /* === Feature Box (General Purpose) === */
 .feature-box {
@@ -455,6 +454,20 @@ footer {
 @media (max-width: 480px) {
   .emotional-pet-corner-accent {
     display: none;
+  }
+  body {
+    padding-left: var(--nav-width-super-mobile);
+  }
+  nav {
+    width: var(--nav-width-super-mobile);
+  }
+  /* Hide the text label and just show the icon */
+  nav li a .nav-text {
+    display: none;
+  }
+  /* Remove the margin below the icon that was spacing it from the text */
+  nav li a img {
+    margin-bottom: 0;
   }
 }
 
@@ -1047,34 +1060,34 @@ footer {
 }
 
 @media screen and (min-width: 765px) {
-      body {
-                padding-left: var(--nav-width-mobile);
-            }
+  body {
+    padding-left: var(--nav-width-mobile);
+  }
 
-            nav {
-                width: var(--nav-width-mobile);
-            }
+  nav {
+    width: var(--nav-width-mobile);
+  }
 
-            /* Adjust nav links to be vertical (icon over text) */
-            nav li a {
-                flex-direction: column;
-                justify-content: center;
-                font-size: 0.8rem;
-                padding: 0.6em 0.5em;
-            }
+  /* Adjust nav links to be vertical (icon over text) */
+  nav li a {
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 0.6em 0.5em;
+  }
 
-            nav li a img {
-                margin-right: 0; /* Remove right margin for vertical layout */
-                margin-bottom: 5px; /* Add bottom margin */
-            }
+  nav li a img {
+    margin-right: 0; /* Remove right margin for vertical layout */
+    margin-bottom: 5px; /* Add bottom margin */
+  }
 
-            nav li a.icon-only img {
-                margin-bottom: 0;
-            }
+  nav li a.icon-only img {
+    margin-bottom: 0;
+  }
 
-            .skip-main a:focus {
-                left: var(--nav-width-mobile); /* Adjust skip link position */
-            }
+  .skip-main a:focus {
+    left: var(--nav-width-mobile); /* Adjust skip link position */
+  }
 
   .main h2,
   .container h2 {
