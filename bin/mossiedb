@@ -16,7 +16,7 @@ if [ $# -ne 1 ]; then
 fi
 
 
-set -x
+#set -x
 
 # Parse argument.  $1 is the first argument
 case $1 in
@@ -30,18 +30,22 @@ case $1 in
     # Create directory and database
     sqlite3 var/mossie.sqlite3 < sql/schema.sql
     sqlite3 var/mossie.sqlite3 < sql/data.sql
+    echo "Created database var/mossie.sqlite3"
     ;;
 
   "destroy")
     # Remove database and uploads directory
     rm -rf var/mossie.sqlite3
+    echo "Destroyed database var/mossie.sqlite3"
     ;;
 
   "reset")
     # Combine destroy and create
     rm -rf var/mossie.sqlite3
+    echo "Destroyed database var/mossie.sqlite3"
     sqlite3 var/mossie.sqlite3 < sql/schema.sql
     sqlite3 var/mossie.sqlite3 < sql/data.sql
+    echo "Created database var/mossie.sqlite3"
     ;;
 
   *)
