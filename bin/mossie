@@ -4,7 +4,7 @@
 # Stop on errors
 # See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 set -Eeuo pipefail
-set -x
+#set -x
 # Check if database exists
 if ! [ -f "var/mossie.sqlite3" ]; then
     echo "Error: can't find database var/mossie.sqlite3"
