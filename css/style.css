@@ -1,7 +1,7 @@
 /* === CSS Custom Properties (Mossie "Cuter" Color Scheme) === */
 :root {
   --mossie-bg: #fff7fa; /* Very Light Pinkish Cream - Main page background */
-  --mossie-header-bg: #ffffff; /* Was #ffdded, now white for nav */
+  --mossie-header-bg: #EADDFF; /* Was #ffdded, now white for nav  --mossie-header-bg: #EADDFF; /* UPDATED: Lavender navbar background */*
   --mossie-footer-bg: #e6d8ff; /* Light Lavender - Footer background */
   --mossie-accent1-bg: #fde6f4; /* A soft pink for the active state */
   --mossie-accent1-text: #9d2d5e; /* Darker pink text for on accent1-bg */
