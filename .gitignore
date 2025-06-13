@@ -1,0 +1,35 @@
+node_modules
+env
+*.egg-info
+*pycache*
+# Python build artifacts
+*.py[cod]
+*$py.class
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+*.egg
+*.egg-info/
+
+# Virtual environments
+.env
+.venv
+venv/
+ENV/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*.cover

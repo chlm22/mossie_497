@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mossie"
+version = "1.0.0"
+dependencies = [
+    "arrow",
+    "bs4",
+    "Flask",
+    "markdown",
+    "pycodestyle",
+    "pydocstyle",
+    "pylint",
+    "pytest",
+    "requests",
+]
+requires-python = ">=3.12"
+
+[tool.setuptools]
+packages = ["mossie"]
+
+[tool.pylint."messages control"]
+disable = ["cyclic-import"]
