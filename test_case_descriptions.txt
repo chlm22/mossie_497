@@ -1,0 +1,91 @@
+# TEST CASE DESCRIPTIONS FOR MOSSIE LOGIN INTERFACE
+
+## 1. User Registration Test
+* Type Options: Unit, (Integration), Validation, System, UI/UX
+* Description: This test verifies the user registration process creates proper database entries with UUID, username, and securely stored password. It confirms that password hashing with SHA-256 and salting is implemented correctly. The test validates that the user is redirected to the login page upon successful registration with appropriate feedback messages.
+* Success Criteria:
+  - User is successfully added to database
+  - Password is stored as a salted hash, not plaintext
+  - User is redirected to login page with success message
+* Assigned to: Caleb
+
+## 2. Duplicate Username Registration Test
+* Type Options: Unit, Integration, (Validation), System, UI/UX
+* Description: This test ensures the application correctly prevents duplicate usernames in the system. It attempts to register a user with an already existing username and verifies the proper error message is displayed. The test confirms database integrity by checking that only one record exists for the attempted duplicate username.
+* Success Criteria:
+  - Error message displayed for duplicate username
+  - Original user entry in database remains unchanged
+  - No new record is created in users table
+* Assigned to: Caleb
+
+## 3. Successful Login Test
+* Type Options: Unit, (Integration), Validation, System, UI/UX
+* Description: This test validates that users can successfully log in with valid credentials. It verifies session variables are properly set with user_id and username upon successful authentication. The test also confirms that after login, users are redirected to the protected dashboard page.
+* Success Criteria:
+  - User session is created with correct user_id and username
+  - User is redirected to dashboard page
+  - Dashboard displays personalized content
+* Assigned to: Caleb
+
+## 4. Failed Login Test
+* Type Options: Unit, Integration, (Validation), System, UI/UX
+* Description: This test validates the system's response to invalid login attempts with non-existent usernames or incorrect passwords. It confirms that appropriate error messages are displayed without revealing which credential was incorrect. The test ensures the session remains empty when authentication fails to prevent security vulnerabilities.
+* Success Criteria:
+  - Error message displayed for invalid credentials
+  - User session not created (remains unauthenticated)
+  - User remains on login page
+* Assigned to: Caleb
+
+## 5. Last Login Timestamp Test
+* Type Options: (Unit), Integration, System
+* Description: This test verifies that the last_login timestamp field is properly updated when users authenticate successfully. It confirms the database records the exact time of login to track user activity. The test validates timestamp integrity by ensuring the updated timestamp is more recent than the previous one.
+* Success Criteria:
+  - Last login timestamp in database is updated
+  - New timestamp is more recent than previous login
+  - Timestamp format is correct and valid
+* Assigned to: Caleb
+
+## 6. Password Reset Request Test
+* Type Options: Unit, (Integration), Validation, System
+* Description: This test validates the functionality of requesting a password reset with a valid username. It confirms a secure token is generated and stored in the database with appropriate expiry time (1 hour from request). The test verifies that a success message is displayed and that the password reset process can proceed to the next step.
+* Success Criteria:
+  - Reset token is created and stored in database
+  - Token expiry is set to 1 hour from request time
+  - Success message is displayed to user
+* Assigned to: Caleb
+
+## 7. Password Reset with Valid Token Test
+* Type Options: Unit, (Integration), Validation, System
+* Description: This test verifies that users with valid reset tokens can successfully change their passwords. It confirms that after password reset, the original password no longer works and only the new password authenticates the user. The test validates that the reset token is properly cleared from the database after successful password change.
+* Success Criteria:
+  - Password is successfully changed in database
+  - Reset token is cleared after successful reset
+  - User can log in with new password but not old password
+* Assigned to: Caleb
+
+## 8. Password Reset with Expired Token Test
+* Type Options: Unit, Integration, (Validation), System
+* Description: This test validates that expired password reset tokens are properly rejected by the system. It intentionally expires a token in the database and attempts to use it for password reset. The test confirms users are redirected to the reset request page with appropriate error messages when using expired tokens.
+* Success Criteria:
+  - Password reset attempt with expired token is rejected
+  - User is redirected to reset request page
+  - Appropriate error message is displayed
+* Assigned to: Caleb
+
+## 9. Session Protection Test
+* Type Options: Integration, System, (Security)
+* Description: This test verifies that protected routes require authenticated sessions to access. It confirms unauthenticated users are redirected to the login page when attempting to access restricted content. The test also validates that after logout, previously accessible protected routes again require authentication.
+* Success Criteria:
+  - Unauthenticated users are redirected to login
+  - Authenticated users can access protected routes
+  - After logout, protected routes are inaccessible
+* Assigned to: Caleb
+
+## 10. SQL Injection Protection Test
+* Type Options: (Security), Validation, System
+* Description: This test validates the system's protection against SQL injection attacks in username and password fields. It attempts various common SQL injection patterns to verify they are properly sanitized and prevented. The test confirms that the database structure remains intact and that no unauthorized access is possible through injection techniques.
+* Success Criteria:
+  - SQL injection attempts are blocked/sanitized
+  - Database structure remains intact
+  - No unauthorized access is granted
+* Assigned to: Caleb

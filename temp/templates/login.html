@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mossie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <img src="{{ url_for('static', filename='images/mossie_logo.svg') }}" alt="Mossie Logo" class="mossie-logo">
+            <div class="welcome-text">Hey there, ready for a little more calm in your day?</div>
+            <div class="welcome-description">
+                Welcome to Mossie! We're here to help you cultivate positive mental health habits
+                in a gentle, supportive way. Explore your thoughts in the journal, track your mood
+                visually, and watch your unique digital pet grow alongside you.
+            </div>
+            <div class="no-pressure">No pressure, just progress.</div>
+            <div class="get-started">Let's get started!</div>
+        </div>
+        <div class="login-right">
+            <div class="mossie-title">Mossie</div>
+            <div class="form-container">
+                {% if error %}
+                <div style="color: red; margin-bottom: 15px;">{{ error }}</div>
+                {% endif %}
+                <form action="{{ url_for('login') }}" method="POST">
+                    <input type="text" name="username" placeholder="Username" class="form-control" required>
+                    <input type="password" name="password" placeholder="Password" class="form-control" required>
+                    <button type="submit" class="sign-in-btn">Sign In</button>
+                </form>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="{{ url_for('register') }}" style="color: #673ab7; text-decoration: none;">Need an account? Register</a>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="{{ url_for('reset_request') }}" style="color: #673ab7; text-decoration: none;">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mossie - Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <img src="{{ url_for('static', filename='images/mossie_logo.svg') }}" alt="Mossie Logo" class="mossie-logo">
+            <div class="welcome-text">Join Mossie today!</div>
+            <div class="welcome-description">
+                Create an account to start your mental health journey with Mossie.
+                Track your mood, journal your thoughts, and watch your digital pet grow.
+            </div>
+            <div class="no-pressure">No pressure, just progress.</div>
+        </div>
+        <div class="login-right">
+            <div class="mossie-title">Mossie</div>
+            <div class="form-container">
+                {% if error %}
+                <div style="color: red; margin-bottom: 15px;">{{ error }}</div>
+                {% endif %}
+                <form action="{{ url_for('register') }}" method="POST">
+                    <input type="text" name="username" placeholder="Choose a username" class="form-control" required>
+                    <input type="password" name="password" placeholder="Create a password" class="form-control" required>
+                    <button type="submit" class="sign-in-btn">Register</button>
+                </form>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="{{ url_for('login') }}" style="color: #673ab7; text-decoration: none;">Already have an account? Sign in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mossie - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .dashboard-container {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .welcome-message {
+            color: #2d0066;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+        .welcome-description {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            justify-content: center;
+        }
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .mossie-logo {
+            width: 150px;
+            margin-bottom: 1.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-weight: bold;
+            color: #2d0066;
+            margin-bottom: 0.5rem;
+        }
+        .feature-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .feature-link {
+            display: inline-block;
+            background-color: #673ab7;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .feature-link:hover {
+            background-color: #5e35b1;
+        }
+        .logout-link {
+            color: #673ab7;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <img src="{{ url_for('static', filename='images/mossie_logo.svg') }}" alt="Mossie Logo" class="mossie-logo">
+        <div class="welcome-message">Welcome, {{ username }}!</div>
+        <div class="welcome-description">
+            You have successfully logged in to your Mossie account.
+            This is the dashboard where you can track your mental health journey.
+        </div>
+        
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <div class="feature-title">Journal</div>
+                <div class="feature-description">Record your thoughts, feelings, and experiences in your personal journal.</div>
+                <a href="{{ url_for('features.journal_list') }}" class="feature-link">Open Journal</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Mood Tracking</div>
+                <div class="feature-description">Track your daily mood and see patterns over time.</div>
+                <a href="{{ url_for('features.mood_tracking') }}" class="feature-link">Track Mood</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🐾</div>
+                <div class="feature-title">Virtual Pet</div>
+                <div class="feature-description">Take care of your virtual pet companion.</div>
+                <a href="{{ url_for('features.pet') }}" class="feature-link">Visit Pet</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <div class="feature-title">Settings</div>
+                <div class="feature-description">Customize your Mossie experience.</div>
+                <a href="{{ url_for('features.settings') }}" class="feature-link">Settings</a>
+            </div>
+        </div>
+        
+        <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>

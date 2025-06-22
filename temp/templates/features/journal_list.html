@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mossie - Journal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background-color: #f8f0ff;
+            font-family: 'Arial', sans-serif;
+        }
+        .journal-container {
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .journal-title {
+            color: #673ab7;
+            font-size: 28px;
+            font-family: 'Pacifico', cursive, sans-serif;
+        }
+        .new-entry-btn {
+            background-color: #673ab7;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .journal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .journal-entry {
+            border-radius: 10px;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .journal-entry:hover {
+            transform: translateY(-3px);
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .entry-title {
+            font-weight: bold;
+            color: #673ab7;
+        }
+        .entry-date {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        .entry-preview {
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .entry-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .no-entries {
+            text-align: center;
+            color: #666;
+            margin-top: 2rem;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .nav-link {
+            color: #673ab7;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="journal-container">
+        <div class="journal-header">
+            <h1 class="journal-title">My Journal</h1>
+            <a href="{{ url_for('features.journal_new') }}" class="new-entry-btn">New Entry</a>
+        </div>
+        
+        {% if entries %}
+            <div class="journal-list">
+                {% for entry in entries %}
+                    <a href="{{ url_for('features.journal_view', entry_id=entry.entry_id) }}" class="entry-link">
+                        <div class="journal-entry">
+                            <div class="entry-header">
+                                <div class="entry-title">{{ entry.title }}</div>
+                                <div class="entry-date">{{ entry.created_at.strftime('%b %d, %Y') }}</div>
+                            </div>
+                            <div class="entry-preview">{{ entry.content }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-entries">
+                <p>You haven't created any journal entries yet.</p>
+                <p>Click "New Entry" to get started!</p>
+            </div>
+        {% endif %}
+        
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}" class="nav-link">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

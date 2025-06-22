@@ -1,0 +1,51 @@
+#BUGS FOR MOSSIE LOGIN INTERFACE
+
+## 1. Password Reset Token Not Expiring
+* Description: Password reset tokens are not being properly expired after 1 hour as designed. Investigation shows the token_expires timestamp comparison is using local time instead of UTC, causing tokens to remain valid for additional hours depending on the server's timezone offset.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 2. Session Not Clearing After Logout
+* Description: User sessions are not being completely cleared after logout action. While the main user_id session variable is removed, secondary session data persists, potentially allowing a new user on the same browser to access previous user's information.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 3. Database Connection Leaks
+* Description: PostgreSQL connections are not being properly closed after database operations, particularly during high traffic or error conditions. This results in connection pool exhaustion after the application has been running for several hours.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 4. SQL Injection in Search Function
+* Description: The user search functionality in the admin section is vulnerable to SQL injection because it directly concatenates user input into SQL queries instead of using parameterized queries or proper escaping mechanisms.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 5. Password Hashing Without Salt
+* Description: In certain error handling paths during user creation, passwords are being hashed without applying the salt first, resulting in inconsistent password hashing. This makes some accounts impossible to log into after creation.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 6. Race Condition in Registration
+* Description: When multiple registration requests with the same username arrive nearly simultaneously, the uniqueness check can pass for both requests before either one completes, resulting in duplicate usernames being created occasionally under high load.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 7. Incorrect HTTP Status Codes
+* Description: The application returns HTTP 200 (OK) status codes for all responses including errors and failures, rather than appropriate 4xx or 5xx status codes. This causes issues with API clients and frontend error handling.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 8. Case-Sensitive Username Collision
+* Description: Username uniqueness check is case-sensitive while login authentication is case-insensitive, allowing registration of usernames that differ only by capitalization (e.g., "User" and "user") but causing authentication confusion.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 9. Session Fixation Vulnerability
+* Description: The application does not regenerate session IDs after login, making it vulnerable to session fixation attacks where an attacker can establish a session and trick a user into authenticating it.
+* Bug Resolved
+* Assigned to: Caleb
+
+## 10. Password Reset for Nonexistent Users
+* Description: The password reset function returns different messages when a username exists versus when it does not exist, allowing attackers to enumerate valid usernames in the system through the password reset functionality.
+* Bug Resolved
+* Assigned to: Caleb

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mossie - Reset Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <img src="{{ url_for('static', filename='images/mossie_logo.svg') }}" alt="Mossie Logo" class="mossie-logo">
+            <div class="welcome-text">Forgot your password?</div>
+            <div class="welcome-description">
+                Enter your username below, and we'll send you a link to reset your password.
+                Your digital pet misses you!
+            </div>
+            <div class="no-pressure">No pressure, just progress.</div>
+        </div>
+        <div class="login-right">
+            <div class="mossie-title">Mossie</div>
+            <div class="form-container">
+                {% if error %}
+                <div style="color: red; margin-bottom: 15px;">{{ error }}</div>
+                {% endif %}
+                {% if success %}
+                <div style="color: green; margin-bottom: 15px;">{{ success }}</div>
+                {% if reset_link %}
+                <div style="background-color: #f8f8f8; padding: 10px; border-radius: 5px; word-break: break-all;">
+                    <strong>Demo Reset Link:</strong> <a href="{{ reset_link }}">{{ reset_link }}</a>
+                </div>
+                {% endif %}
+                {% endif %}
+                <form action="{{ url_for('reset_request') }}" method="POST">
+                    <input type="text" name="username" placeholder="Username" class="form-control" required>
+                    <button type="submit" class="sign-in-btn">Request Reset</button>
+                </form>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="{{ url_for('login') }}" style="color: #673ab7; text-decoration: none;">Back to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
