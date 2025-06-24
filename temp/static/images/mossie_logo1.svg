@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Plant stem and leaves -->
+  <path d="M100 200C100 150 100 120 100 80" stroke="#2d0066" stroke-width="8" fill="none"/>
+  <!-- Leaf 1 -->
+  <path d="M100 100C130 70 160 90 140 120C100 130 100 100 100 100Z" fill="#2d0066" stroke="#2d0066" stroke-width="2"/>
+  <!-- Leaf 2 -->
+  <path d="M100 100C70 70 40 90 60 120C100 130 100 100 100 100Z" fill="#2d0066" stroke="#2d0066" stroke-width="2"/>
+  <!-- Smile -->
+  <path d="M70 200 Q100 180 130 200" stroke="#2d0066" stroke-width="8" fill="none"/>
+</svg>
