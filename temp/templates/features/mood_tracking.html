@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,70 +10,91 @@
         body {
             background-color: #f8f0ff;
             font-family: 'Arial', sans-serif;
-        }
+        }   
+
         .mood-container {
-            padding: 2rem;
-            max-width: 600px;
+            padding: 4rem;
+            width: 70%;
+            height: 100%;
+            max-width: 1100px;
             margin: 0 auto;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+             margin: 2rem auto; 
         }
+
         .mood-header {
             margin-bottom: 2rem;
         }
+
         .mood-title {
             color: #673ab7;
-            font-size: 28px;
-            font-family: 'Pacifico', cursive, sans-serif;
+            font-size: 38px;
+            font-family: 'Pacifico', sans-serif;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
         }
+
         .mood-form {
             background-color: #f9f9f9;
             border-radius: 15px;
-            padding: 1.5rem;
+            padding: 5rem;
             margin-bottom: 2rem;
+            align-items: center;
         }
+
         .form-title {
             font-weight: bold;
             margin-bottom: 1rem;
             color: #673ab7;
             text-align: center;
         }
+
         .mood-selector {
             display: flex;
             justify-content: space-between;
             margin-bottom: 1.5rem;
         }
+
         .mood-option {
             display: flex;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
         }
+
         .mood-emoji {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 3rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
+
         .mood-label {
-            font-size: 0.8rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
             color: #666;
         }
+
         .mood-input {
             display: none;
         }
-        .mood-input:checked + .mood-emoji {
+
+        .mood-input:checked+.mood-emoji {
             transform: scale(1.2);
         }
+
         .form-group {
             margin-bottom: 1rem;
         }
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
+
         .form-textarea {
             width: 100%;
             padding: 0.75rem;
@@ -80,38 +102,54 @@
             border-radius: 4px;
             resize: vertical;
             font-family: inherit;
+            align-items: center;
         }
+
         .btn {
+            display: inline-block;
             padding: 0.75rem 1.5rem;
-            background-color: #673ab7;
-            color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            transition: background-color 0.2s;
-            box-shadow: 0 2px 5px rgba(103, 58, 183, 0.3);
-        }
-        /* .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
+            font-size: 1rem; /* Kept font-size from your request */
             text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-        } */
+            color: white;
+            background-color: #673ab7;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* .btn {
+padding: 0.75rem 1.5rem;
+border-radius: 4px;
+text-decoration: none;
+font-weight: bold;
+cursor: pointer;
+font-size: 1rem;
+} */
         .btn-save {
             background-color: #673ab7;
             color: white;
             border: none;
             align-self: flex-start;
         }
+
         .mood-charts {
             margin-top: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .chart-section {
             margin-bottom: 3rem;
             width: 100%;
@@ -119,13 +157,15 @@
             border-radius: 15px;
             padding: 1.5rem;
         }
+
         .chart-title {
             font-weight: bold;
             margin-bottom: 1rem;
             color: #673ab7;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
+
         .weekly-chart {
             height: 200px;
             background-color: #f9f9f9;
@@ -136,6 +176,7 @@
             align-items: flex-end;
             justify-content: space-around;
         }
+
         .chart-bar {
             width: 40px;
             background-color: #673ab7;
@@ -147,44 +188,65 @@
             justify-content: flex-end;
             align-items: center;
         }
-        .mood-level-1 { height: 20px; }
-        .mood-level-2 { height: 40px; }
-        .mood-level-3 { height: 60px; }
-        .mood-level-4 { height: 80px; }
-        .mood-level-5 { height: 100px; }
+
+        .mood-level-1 {
+            height: 20px;
+        }
+
+        .mood-level-2 {
+            height: 40px;
+        }
+
+        .mood-level-3 {
+            height: 60px;
+        }
+
+        .mood-level-4 {
+            height: 80px;
+        }
+
+        .mood-level-5 {
+            height: 100px;
+        }
+
         .chart-label {
             position: absolute;
-            bottom: -25px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: #666;
         }
+
         .chart-value {
             position: absolute;
             top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: #333;
         }
+
         .monthly-calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 0.5rem;
         }
+
         .calendar-header {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
+
         .calendar-day {
             text-align: center;
             font-weight: bold;
             color: #666;
-            font-size: 0.8rem;
+            font-size: 1rem;
         }
+
         .calendar-date {
             aspect-ratio: 1;
             display: flex;
@@ -193,40 +255,58 @@
             justify-content: center;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
         }
+
         .calendar-date-number {
             font-weight: bold;
         }
+
         .calendar-date-mood {
-            font-size: 1rem;
+            font-size: 1.5rem;
             margin-top: 0.25rem;
         }
-        .mood-1 { background-color: #ffcdd2; }
-        .mood-2 { background-color: #ffecb3; }
-        .mood-3 { background-color: #e8f5e9; }
-        .mood-4 { background-color: #bbdefb; }
-        .mood-5 { background-color: #d1c4e9; }
+
+        .mood-1 {
+            background-color: #ffcdd2;
+        }
+
+        .mood-2 {
+            background-color: #ffecb3;
+        }
+
+        .mood-3 {
+            background-color: #e8f5e9;
+        }
+
+        .mood-4 {
+            background-color: #bbdefb;
+        }
+
+        .mood-5 {
+            background-color: #d1c4e9;
+        }
+
         .nav-links {
             display: flex;
             justify-content: space-between;
             margin-top: 2rem;
         }
+
         .nav-link {
             color: #673ab7;
             text-decoration: none;
         }
     </style>
 </head>
+
 <body>
     <div class="mood-container">
         <div class="mood-header">
             <h1 class="mood-title">Mood</h1>
         </div>
-        
         <div class="mood-form">
             <h2 class="form-title">How are you feeling today?</h2>
-            
             <form method="post">
                 <div class="mood-selector">
                     <label class="mood-option">
@@ -255,33 +335,27 @@
                         <span class="mood-label">Very Good</span>
                     </label>
                 </div>
-                
                 <div class="form-group">
                     <label for="mood_note" class="form-label">Notes (optional)</label>
                     <textarea id="mood_note" name="mood_note" class="form-textarea" rows="3"></textarea>
                 </div>
-                
                 <button type="submit" class="btn">Record Mood</button>
             </form>
         </div>
-        
         <div class="mood-charts">
             <div class="chart-section">
                 <h2 class="chart-title">Weekly Mood</h2>
-                
                 <div class="weekly-chart">
                     {% for mood in weekly_moods %}
-                        <div class="chart-bar mood-level-{{ mood.mood_value }}">
-                            <span class="chart-value">{{ mood.mood_value }}</span>
-                            <span class="chart-label">{{ mood.recorded_at.strftime('%a') }}</span>
-                        </div>
+                    <div class="chart-bar mood-level-{{ mood.mood_value }}">
+                        <span class="chart-value">{{ mood.mood_value }}</span>
+                        <span class="chart-label">{{ mood.recorded_at.strftime('%a') }}</span>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
-            
             <div class="chart-section">
                 <h2 class="chart-title">Monthly Mood</h2>
-                
                 <div class="calendar-header">
                     <div class="calendar-day">Sun</div>
                     <div class="calendar-day">Mon</div>
@@ -291,53 +365,46 @@
                     <div class="calendar-day">Fri</div>
                     <div class="calendar-day">Sat</div>
                 </div>
-                
                 <div class="monthly-calendar">
                     {# Using today variable passed from the route #}
                     {% set first_day = today.replace(day=1) %}
                     {% set next_month = today.replace(day=28) + datetime.timedelta(days=4) %}
                     {% set last_day = (next_month.replace(day=1) - datetime.timedelta(days=1)).day %}
-                    
                     {# Add empty cells for days before the first day of the month #}
                     {% for _ in range(first_day.weekday()) %}
-                        <div class="calendar-date"></div>
+                    <div class="calendar-date"></div>
                     {% endfor %}
-                    
                     {# Add cells for each day of the month #}
                     {% for day in range(1, last_day + 1) %}
-                        {% set date = today.replace(day=day) %}
-                        {% set mood = monthly_moods|selectattr('recorded_at.day', 'eq', day)|first %}
-                        
-                        <div class="calendar-date {% if mood %}mood-{{ mood.mood_value }}{% endif %}">
-                            <span class="calendar-date-number">{{ day }}</span>
-                            {% if mood %}
-                                <span class="calendar-date-mood">
-                                    {% if mood.mood_value == 1 %}😢{% endif %}
-                                    {% if mood.mood_value == 2 %}😕{% endif %}
-                                    {% if mood.mood_value == 3 %}😐{% endif %}
-                                    {% if mood.mood_value == 4 %}🙂{% endif %}
-                                    {% if mood.mood_value == 5 %}😄{% endif %}
-                                </span>
-                            {% endif %}
-                        </div>
+                    {% set date = today.replace(day=day) %}
+                    {% set mood = monthly_moods|selectattr('recorded_at.day', 'eq', day)|first %}
+                    <div class="calendar-date {% if mood %}mood-{{ mood.mood_value }}{% endif %}">
+                        <span class="calendar-date-number">{{ day }}</span>
+                        {% if mood %}
+                        <span class="calendar-date-mood">
+                            {% if mood.mood_value == 1 %}😢{% endif %}
+                            {% if mood.mood_value == 2 %}😕{% endif %}
+                            {% if mood.mood_value == 3 %}😐{% endif %}
+                            {% if mood.mood_value == 4 %}🙂{% endif %}
+                            {% if mood.mood_value == 5 %}😄{% endif %}
+                        </span>
+                        {% endif %}
+                    </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-        
         <div class="nav-links">
             <a href="{{ url_for('dashboard') }}" class="btn btn-save">Back to Dashboard</a>
         </div>
     </div>
-    
     <script>
         // Highlight selected mood option
         document.querySelectorAll('.mood-input').forEach(input => {
-            input.addEventListener('change', function() {
+            input.addEventListener('change', function () {
                 document.querySelectorAll('.mood-emoji').forEach(emoji => {
                     emoji.style.transform = 'scale(1)';
                 });
-                
                 if (this.checked) {
                     this.nextElementSibling.style.transform = 'scale(1.2)';
                 }
@@ -345,4 +412,5 @@
         });
     </script>
 </body>
+
 </html>

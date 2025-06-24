@@ -12,8 +12,10 @@
         }
         .pet-container {
             padding: 2rem;
-            max-width: 600px;
+            width: 60%;
+            max-width: 800px;
             margin: 0 auto;
+            height:100%;
             text-align: center;
             background-color: white;
             border-radius: 10px;
@@ -24,25 +26,25 @@
         }
         .pet-title {
             color: #673ab7;
-            font-size: 28px;
-            font-family: 'Pacifico', cursive, sans-serif;
+            font-size: 32px;
+            font-family: 'Pacifico', sans-serif;
             margin-bottom: 1rem;
         }
         .pet-area {
             background-color: #f9f9f9;
             border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             position: relative;
-            height: 300px;
+            height: 500px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
         .pet-image {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             position: relative;
             margin: 0 auto;
         }
@@ -50,6 +52,7 @@
             width: 100%;
             height: 100%;
         }
+   
         .pet-accessory {
             position: absolute;
             top: 0;
@@ -66,7 +69,7 @@
         .pet-stats {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 6rem;
             margin-bottom: 1rem;
         }
         .pet-stat {
@@ -75,18 +78,19 @@
             align-items: center;
         }
         .stat-label {
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0.5rem;
         }
         .stat-value {
             font-weight: bold;
             color: #333;
         }
         .progress-bar {
-            width: 100px;
-            height: 10px;
+            width: 130px;
+            height: 20px;
             background-color: #ddd;
-            border-radius: 5px;
+            border-radius: 2px;
             overflow: hidden;
         }
         .progress-fill {
@@ -95,25 +99,51 @@
         }
         .pet-actions {
             margin-top: 1.5rem;
-            text-align: center;
+            text-align: left;
         }
         .btn {
+            display: inline-block;
             padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem; /* Kept font-size from your request */
+            text-decoration: none;
+            color: white;
+            background-color: #673ab7;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-save {
             background-color: #673ab7;
             color: white;
             border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.2s;
-            box-shadow: 0 2px 5px rgba(103, 58, 183, 0.3);
+            align-self: flex-start;
+            margin-top: 2rem;
+            margin-bottom: 8rem;
         }
-        .accessories-section {
+
+        .btn-hehe{ align-items: left;
             margin-top: 3rem;
+        }
+
+        .accessories-section {
+            margin-top: 4rem;
+            margin-bottom: 3.5rem;
         }
         .accessories-title {
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
             color: #2d0066;
             font-size: 20px;
             text-align: center;
@@ -124,14 +154,16 @@
             justify-content: center;
             gap: 1.5rem;
             margin-top: 1rem;
+            align-items: center;
         }
+
         .accessory-item {
             background: none;
             border: none;
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            padding: 0.5rem;
+            width: 80px;
+            height: 80px;
+            padding: 1rem;
             transition: all 0.2s;
             text-align: center;
             display: flex;
@@ -147,16 +179,16 @@
             background-color: #ede7f6;
         }
         .accessory-image {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 0.25rem;
-            margin-left: auto;
+            align-items: center;
+            width: 75px;
+            height: 75px;
+            margin-top: 2.5rem;
+            margin-left: -0.9rem;
             margin-right: auto;
             display: block;
         }
         .accessory-name {
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+            font-size: 1rem;
         }
         .nav-links {
             display: flex;
@@ -210,7 +242,7 @@
             
             <div class="pet-actions">
                 <form action="{{ url_for('features.pet_interact') }}" method="post">
-                    <button type="submit" class="btn">Play with {{ pet.name }}</button>
+                    <button type="submit" class="btn btn-hehe">Play with {{ pet.name }}</button>
                 </form>
             </div>
         </div>

@@ -101,43 +101,51 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- Button Styles --- */
+        /* --- MODERN BUTTON STYLES (ADAPTED FROM SETTINGS) --- */
         .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .feature-link {
             display: inline-block;
-            background-color: #673ab7;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
             color: white;
-            margin-top: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .feature-link:hover {
-            background-color: #5e35b1;
-            transform: scale(1.05);
+        /* Gradient for primary feature buttons */
+        .feature-link {
+            background-image: linear-gradient(to right, #673ab7, #7E57C2);
+            margin-top: auto; /* Pushes button to the bottom of the card */
         }
         
+        /* Logout button style */
         .btn-logout {
             position: absolute;
-            top: 1rem;    /* Adjusted for mobile */
-            right: 1rem;  /* Adjusted for mobile */
-            background-color: #673ab7;
-            color: white;
-            border: none;
+            top: 1rem;
+            right: 1rem;
+            /* Using the light style from settings for a less prominent look */
+            background-color: #f1f1f1;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             padding: 0.5rem 1rem; /* Smaller padding for mobile */
             font-size: 0.9rem;
         }
         .btn-logout:hover {
-            background-color: #5e35b1;
+             background-color: #e9e9e9; /* Slightly darken on hover */
         }
+
 
         /* --- RESPONSIVE STYLES --- */
 
@@ -156,7 +164,6 @@
                 font-size: 1.1rem;
             }
             .feature-cards {
-                /* Two columns for tablets */
                 grid-template-columns: repeat(2, 1fr);
                 max-width: 700px;
                 gap: 2rem;
@@ -178,7 +185,6 @@
                 font-size: 2.25rem;
             }
             .feature-cards {
-                /* Four columns for desktops */
                 grid-template-columns: repeat(4, 1fr);
                 max-width: 1100px;
             }
